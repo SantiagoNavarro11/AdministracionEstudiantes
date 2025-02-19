@@ -1,0 +1,6 @@
+@Mectronics.AdministracionEstudiantes_HostAddress = http://localhost:5115
+
+GET {{Mectronics.AdministracionEstudiantes_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
