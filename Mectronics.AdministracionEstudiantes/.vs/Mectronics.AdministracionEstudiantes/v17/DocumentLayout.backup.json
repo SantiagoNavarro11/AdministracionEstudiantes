@@ -1,7 +1,14 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CB7612E5-F24E-444C-ABF2-6F0B23D963AD}|..\\Mectronics.AdministracionEstudiantes.Transversales\\Mectronics.AdministracionEstudiantes.Transversales.csproj|e:\\repositorios\\mectronics.administracionestudiantes\\mectronics.administracionestudiantes.transversales\\filtros\\rolesfiltros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB7612E5-F24E-444C-ABF2-6F0B23D963AD}|..\\Mectronics.AdministracionEstudiantes.Transversales\\Mectronics.AdministracionEstudiantes.Transversales.csproj|e:\\repositorios\\mectronics.administracionestudiantes\\mectronics.administracionestudiantes.transversales\\entidades\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -9,7 +16,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +29,32 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Roles.cs",
+              "DocumentMoniker": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Transversales\\Entidades\\Roles.cs",
+              "RelativeDocumentMoniker": "..\\Mectronics.AdministracionEstudiantes.Transversales\\Entidades\\Roles.cs",
+              "ToolTip": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Transversales\\Entidades\\Roles.cs",
+              "RelativeToolTip": "..\\Mectronics.AdministracionEstudiantes.Transversales\\Entidades\\Roles.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T12:48:24.191Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RolesFiltros.cs",
+              "DocumentMoniker": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Transversales\\Filtros\\RolesFiltros.cs",
+              "RelativeDocumentMoniker": "..\\Mectronics.AdministracionEstudiantes.Transversales\\Filtros\\RolesFiltros.cs",
+              "ToolTip": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Transversales\\Filtros\\RolesFiltros.cs",
+              "RelativeToolTip": "..\\Mectronics.AdministracionEstudiantes.Transversales\\Filtros\\RolesFiltros.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T12:46:10.028Z",
+              "EditorCaption": ""
             }
           ]
         }

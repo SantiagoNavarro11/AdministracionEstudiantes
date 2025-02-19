@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
 {
-    class Roles
+    public class Rol
     {
         /// <summary>
         /// Identificador único del rol.
@@ -17,22 +17,16 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
         /// <summary>
         /// Nombre del rol.
         /// </summary>
-        public string NombreRol { get; set; }
+        public string Nombre { get; set; }
 
         /// <summary>
-        /// Constructor de la clase <see cref="Roles"/>.
+        /// Constructor de la clase <see cref="Rol"/>.
         /// Inicializa una nueva instancia con valores predeterminados.
         /// </summary>
-        public Roles()
+        public Rol()
         {
             IdRol = 0;
-            NombreRol = string.Empty;
-        }
-
-        public Roles(IDataReader lector)
-        {
-            IdRol = lector.GetInt32(0);
-            NombreRol = lector.GetString(1);
+            Nombre = string.Empty;
         }
     }
 }

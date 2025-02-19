@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
 {
-    class Usuarios
+    public class Usuario
     {
         /// <summary>
         /// Identificador único del usuario.
@@ -42,7 +42,7 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
         /// <summary>
         /// Identificador del rol asignado al usuario.
         /// </summary>
-        public Roles Roles { get; set; }
+        public Rol Roles { get; set; }
 
         /// <summary>
         /// Fecha de registro del usuario.
@@ -50,10 +50,10 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
         public DateTime Fecha { get; set; }
 
         /// <summary>
-        /// Constructor de la clase <see cref="Usuarios"/>.
+        /// Constructor de la clase <see cref="Usuario"/>.
         /// Inicializa una nueva instancia con valores predeterminados.
         /// </summary>
-        public Usuarios()
+        public Usuario()
         {
             IdUsuario = 0;
             Nombres = string.Empty;
@@ -61,11 +61,11 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
             Edad = 0;
             CorreoElectronico = string.Empty;
             Contrasena = string.Empty;
-            Roles = new Roles(); 
+            Roles = new Rol();
             Fecha = DateTime.MinValue;
         }
 
-        public Usuarios(IDataReader lector)
+        public Usuario(IDataReader lector)
         {
             IdUsuario = lector.GetInt32(0);
             Nombres = lector.GetString(1);
@@ -73,7 +73,7 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
             Edad = lector.GetInt32(3);
             CorreoElectronico = lector.GetString(4);
             Contrasena = lector.GetString(5);
-            Roles = new Roles();
+            Roles = new Rol();
             Roles.IdRol = lector.GetInt32(6);
             Fecha = lector.GetDateTime(7);
         }

@@ -3,10 +3,16 @@
   "WorkspaceRootPath": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CB7612E5-F24E-444C-ABF2-6F0B23D963AD}|..\\Mectronics.AdministracionEstudiantes.Transversales\\Mectronics.AdministracionEstudiantes.Transversales.csproj|e:\\repositorios\\mectronics.administracionestudiantes\\mectronics.administracionestudiantes.transversales\\filtros\\rolesfiltros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CB7612E5-F24E-444C-ABF2-6F0B23D963AD}|..\\Mectronics.AdministracionEstudiantes.Transversales\\Mectronics.AdministracionEstudiantes.Transversales.csproj|e:\\repositorios\\mectronics.administracionestudiantes\\mectronics.administracionestudiantes.transversales\\mapeos\\rolmapeo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CB7612E5-F24E-444C-ABF2-6F0B23D963AD}|..\\Mectronics.AdministracionEstudiantes.Transversales\\Mectronics.AdministracionEstudiantes.Transversales.csproj|e:\\repositorios\\mectronics.administracionestudiantes\\mectronics.administracionestudiantes.transversales\\entidades\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CB7612E5-F24E-444C-ABF2-6F0B23D963AD}|..\\Mectronics.AdministracionEstudiantes.Transversales\\Mectronics.AdministracionEstudiantes.Transversales.csproj|e:\\repositorios\\mectronics.administracionestudiantes\\mectronics.administracionestudiantes.transversales\\interfaces\\irol\\irolrepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB7612E5-F24E-444C-ABF2-6F0B23D963AD}|..\\Mectronics.AdministracionEstudiantes.Transversales\\Mectronics.AdministracionEstudiantes.Transversales.csproj|e:\\repositorios\\mectronics.administracionestudiantes\\mectronics.administracionestudiantes.transversales\\filtros\\rolfiltro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB7612E5-F24E-444C-ABF2-6F0B23D963AD}|..\\Mectronics.AdministracionEstudiantes.Transversales\\Mectronics.AdministracionEstudiantes.Transversales.csproj|e:\\repositorios\\mectronics.administracionestudiantes\\mectronics.administracionestudiantes.transversales\\entidades\\rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -16,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -32,28 +38,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Roles.cs",
-              "DocumentMoniker": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Transversales\\Entidades\\Roles.cs",
-              "RelativeDocumentMoniker": "..\\Mectronics.AdministracionEstudiantes.Transversales\\Entidades\\Roles.cs",
-              "ToolTip": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Transversales\\Entidades\\Roles.cs",
-              "RelativeToolTip": "..\\Mectronics.AdministracionEstudiantes.Transversales\\Entidades\\Roles.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "RolMapeo.cs",
+              "DocumentMoniker": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Transversales\\Mapeos\\RolMapeo.cs",
+              "RelativeDocumentMoniker": "..\\Mectronics.AdministracionEstudiantes.Transversales\\Mapeos\\RolMapeo.cs",
+              "ToolTip": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Transversales\\Mapeos\\RolMapeo.cs",
+              "RelativeToolTip": "..\\Mectronics.AdministracionEstudiantes.Transversales\\Mapeos\\RolMapeo.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwCkAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T12:48:24.191Z",
+              "WhenOpened": "2025-02-19T15:37:48.216Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RolesFiltros.cs",
-              "DocumentMoniker": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Transversales\\Filtros\\RolesFiltros.cs",
-              "RelativeDocumentMoniker": "..\\Mectronics.AdministracionEstudiantes.Transversales\\Filtros\\RolesFiltros.cs",
-              "ToolTip": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Transversales\\Filtros\\RolesFiltros.cs",
-              "RelativeToolTip": "..\\Mectronics.AdministracionEstudiantes.Transversales\\Filtros\\RolesFiltros.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "IRolRepositorio.cs",
+              "DocumentMoniker": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Transversales\\Interfaces\\IRol\\IRolRepositorio.cs",
+              "RelativeDocumentMoniker": "..\\Mectronics.AdministracionEstudiantes.Transversales\\Interfaces\\IRol\\IRolRepositorio.cs",
+              "ToolTip": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Transversales\\Interfaces\\IRol\\IRolRepositorio.cs",
+              "RelativeToolTip": "..\\Mectronics.AdministracionEstudiantes.Transversales\\Interfaces\\IRol\\IRolRepositorio.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T12:46:10.028Z",
+              "WhenOpened": "2025-02-19T15:37:44.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RolFiltro.cs",
+              "DocumentMoniker": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Transversales\\Filtros\\RolFiltro.cs",
+              "RelativeDocumentMoniker": "..\\Mectronics.AdministracionEstudiantes.Transversales\\Filtros\\RolFiltro.cs",
+              "ToolTip": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Transversales\\Filtros\\RolFiltro.cs",
+              "RelativeToolTip": "..\\Mectronics.AdministracionEstudiantes.Transversales\\Filtros\\RolFiltro.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T15:37:33.626Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Rol.cs",
+              "DocumentMoniker": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Transversales\\Entidades\\Rol.cs",
+              "RelativeDocumentMoniker": "..\\Mectronics.AdministracionEstudiantes.Transversales\\Entidades\\Rol.cs",
+              "ToolTip": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Transversales\\Entidades\\Rol.cs",
+              "RelativeToolTip": "..\\Mectronics.AdministracionEstudiantes.Transversales\\Entidades\\Rol.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T14:22:48.859Z",
               "EditorCaption": ""
             }
           ]

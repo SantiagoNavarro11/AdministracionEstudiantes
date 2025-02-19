@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
 {
-    class EventosLogs
+    public class EventoLog
     {
         /// <summary>
         /// Identificador único del log de evento.
@@ -17,7 +17,7 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
         /// <summary>
         /// Tipo de evento registrado.
         /// </summary>
-        public string TipoLog { get; set; }
+        public string Tipo { get; set; }
 
         /// <summary>
         /// Fecha en que ocurrió el evento.
@@ -32,28 +32,28 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
         /// <summary>
         /// Identificador del usuario relacionado con el evento.
         /// </summary>
-        public Usuarios Usuarios { get; set; }
+        public Usuario Usuarios { get; set; }
 
         /// <summary>
-        /// Constructor de la clase <see cref="EventosLogs"/>.
+        /// Constructor de la clase <see cref="EventoLog"/>.
         /// Inicializa una nueva instancia con valores predeterminados.
         /// </summary>
-        public EventosLogs()
+        public EventoLog()
         {
             IdLogs = 0;
-            TipoLog = string.Empty;
+            Tipo = string.Empty;
             Fecha = DateTime.MinValue;
             Informacion = string.Empty;
-            Usuarios = new Usuarios();
+            Usuarios = new Usuario();
         }
 
-        public EventosLogs(IDataReader lector)
+        public EventoLog(IDataReader lector)
         {
             IdLogs = lector.GetInt32(0);
-            TipoLog = lector.GetString(1);
+            Tipo = lector.GetString(1);
             Fecha = lector.GetDateTime(2);
             Informacion = lector.GetString(3);
-            Usuarios = new Usuarios();
+            Usuarios = new Usuario();
             Usuarios.IdUsuario = lector.GetInt32(4);
         }
     }

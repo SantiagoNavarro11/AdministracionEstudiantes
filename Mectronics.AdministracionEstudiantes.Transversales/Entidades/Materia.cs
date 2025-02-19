@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
 {
-    class Materias
+    public class Materia
     {
         /// <summary>
         /// Identificador único de la materia.
@@ -17,12 +17,12 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
         /// <summary>
         /// Nombre de la materia.
         /// </summary>
-        public string NombreMateria { get; set; }
+        public string Nombre { get; set; }
 
         /// <summary>
         /// Número de créditos de la materia.
         /// </summary>
-        public int NumeroCreditosMateria { get; set; }
+        public int NumeroCreditos { get; set; }
 
         /// <summary>
         /// Identificador del profesor encargado de la materia.
@@ -30,22 +30,22 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
         public int IdUsuarioProfesor { get; set; }
 
         /// <summary>
-        /// Constructor de la clase <see cref="Materias"/>.
+        /// Constructor de la clase <see cref="Materia"/>.
         /// Inicializa una nueva instancia con valores predeterminados.
         /// </summary>
-        public Materias()
+        public Materia()
         {
             IdMateria = 0;
-            NombreMateria = string.Empty;
-            NumeroCreditosMateria = 0;
+            Nombre = string.Empty;
+            NumeroCreditos = 0;
             IdUsuarioProfesor = 0;
         }
 
-        public Materias(IDataReader lector)
+        public Materia(IDataReader lector)
         {
             IdMateria = lector.GetInt32(0);
-            NombreMateria = lector.GetString(1);
-            NumeroCreditosMateria = lector.GetInt32(2);
+            Nombre = lector.GetString(1);
+            NumeroCreditos = lector.GetInt32(2);
             IdUsuarioProfesor = lector.GetInt32(3);
         }
     }
