@@ -14,7 +14,7 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Filtros
         /// <summary>
         /// Identificador único del rol.
         /// </summary>
-        public int IdRoles { get; set; }
+        public int IdRol { get; set; }
 
         /// <summary>
         /// Nombre del rol.
@@ -27,7 +27,7 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Filtros
         /// </summary>
         public RolFiltro()
         {
-            IdRoles = 0;
+            IdRol = 0;
             Nombre = string.Empty;
         }
     }

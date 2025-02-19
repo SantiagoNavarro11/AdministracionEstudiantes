@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mectronics.AdministracionEstudiantes.Transversales")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+68e5f78d5aa410f689320c2448b3e844c3b2acab")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+23a73727f5749c035e193bf178b5ff246501de16")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mectronics.AdministracionEstudiantes.Transversales")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mectronics.AdministracionEstudiantes.Transversales")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

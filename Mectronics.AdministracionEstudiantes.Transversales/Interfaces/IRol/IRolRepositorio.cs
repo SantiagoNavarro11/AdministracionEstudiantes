@@ -18,28 +18,28 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IRol
         /// </summary>
         /// <param name="objEntidad">Objeto de tipo <see cref="Rol"/> con la información del rol a insertar.</param>
         /// <returns>Retorna un entero que indica el resultado de la operación (puede ser el ID generado o filas afectadas).</returns>
-        int InsertarRol(Rol objEntidad);
+        int Insertar(Rol objEntidad);
 
         /// <summary>
         /// Modifica la información de un rol existente en la base de datos.
         /// </summary>
         /// <param name="objEntidad">Objeto de tipo <see cref="Rol"/> con la información actualizada del rol.</param>
         /// <returns>Retorna un entero indicando el resultado de la operación.</returns>
-        int ModificarRol(Rol objEntidad);
+        int Modificar(Rol objEntidad);
 
         /// <summary>
         /// Elimina un rol de la base de datos mediante su identificador único.
         /// </summary>
         /// <param name="IdRol">Identificador único del rol a eliminar.</param>
         /// <returns>Retorna un valor booleano indicando si la eliminación fue exitosa (true) o no (false).</returns>
-        bool EliminarRol(int IdRol);
+        int Eliminar(int IdRol);
 
         /// <summary>
         /// Consulta un rol específico en la base de datos según los criterios definidos en <see cref="RolFiltro"/>.
         /// </summary>
         /// <param name="objEntidad">Objeto de tipo <see cref="RolFiltro"/> con los criterios de búsqueda.</param>
         /// <returns>Retorna un objeto de tipo <see cref="Rol"/> con la información del rol encontrado.</returns>
-        Rol ConsultarRol(RolFiltro objEntidad);
+        Rol Consultar(RolFiltro objEntidad);
 
         /// <summary>
         /// Consulta un listado de roles en la base de datos según los criterios definidos en <see cref="RolFiltro"/>.

@@ -1,0 +1,12 @@
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Repositorio\bin\Debug\net8.0\Mectronics.AdministracionEstudiantes.Repositorio.deps.json
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Repositorio\bin\Debug\net8.0\Mectronics.AdministracionEstudiantes.Repositorio.dll
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Repositorio\bin\Debug\net8.0\Mectronics.AdministracionEstudiantes.Repositorio.pdb
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Repositorio\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.Repositorio.GeneratedMSBuildEditorConfig.editorconfig
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Repositorio\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.Repositorio.AssemblyInfoInputs.cache
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Repositorio\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.Repositorio.AssemblyInfo.cs
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Repositorio\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.Repositorio.csproj.CoreCompileInputs.cache
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Repositorio\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.Repositorio.sourcelink.json
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Repositorio\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.Repositorio.dll
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Repositorio\obj\Debug\net8.0\refint\Mectronics.AdministracionEstudiantes.Repositorio.dll
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Repositorio\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.Repositorio.pdb
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Repositorio\obj\Debug\net8.0\ref\Mectronics.AdministracionEstudiantes.Repositorio.dll
