@@ -40,13 +40,5 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
             NumeroCreditos = 0;
             IdUsuarioProfesor = 0;
         }
-
-        public Materia(IDataReader lector)
-        {
-            IdMateria = lector.GetInt32(0);
-            Nombre = lector.GetString(1);
-            NumeroCreditos = lector.GetInt32(2);
-            IdUsuarioProfesor = lector.GetInt32(3);
-        }
     }
 }

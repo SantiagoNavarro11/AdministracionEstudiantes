@@ -16,6 +16,8 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Filtros
         /// </summary>
         public int IdLogs { get; set; }
 
+        public DateOnly Fecha { get; set; }
+
         /// <summary>
         /// Constructor de la clase <see cref="EventoLogFiltro"/>.
         /// Inicializa una nueva instancia con valores predeterminados.
@@ -23,6 +25,7 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Filtros
         public EventoLogFiltro()
         {
             IdLogs = 0;
+            Fecha = DateOnly.MinValue;
         }
     }
 }

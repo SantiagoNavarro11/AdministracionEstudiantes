@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IEventoLog
 {
-    public interface IRepositorioEventoLog
+    public interface IEventoLogRepositorio
     {
-        int InsertarEventoLog(EventoLog objEntidad);
+        int Insertar(EventoLog objEntidad);
         List<EventoLog> ConsultarListado(EventoLogFiltro objEntidad);
     }
 }

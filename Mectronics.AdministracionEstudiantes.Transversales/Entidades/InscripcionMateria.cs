@@ -17,12 +17,12 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
         /// <summary>
         /// Identificador del usuario inscrito en la materia.
         /// </summary>
-        public Usuario Usuarios { get; set; }
+        public Usuario Usuario { get; set; }
 
         /// <summary>
         /// Identificador de la materia en la que se inscribió el usuario.
         /// </summary>
-        public Materia Materias { get; set; }
+        public Materia Materia { get; set; }
 
         /// <summary>
         /// Constructor de la clase <see cref="InscripcionMateria"/>.
@@ -31,17 +31,8 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
         public InscripcionMateria()
         {
             IdInscripcion = 0;
-            Usuarios = new Usuario();
-            Materias = new Materia();
-        }
-
-        public InscripcionMateria(IDataReader lector)
-        {
-            IdInscripcion = lector.GetInt32(0);
-            Usuarios = new Usuario();
-            Usuarios.IdUsuario = lector.GetInt32(1);
-            Materias = new Materia();
-            Materias.IdMateria = lector.GetInt32(2);
+            Usuario = new Usuario();
+            Materia = new Materia();
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
         /// <summary>
         /// Identificador del usuario relacionado con el evento.
         /// </summary>
-        public Usuario Usuarios { get; set; }
+        public Usuario Usuario { get; set; }
 
         /// <summary>
         /// Constructor de la clase <see cref="EventoLog"/>.
@@ -44,17 +44,7 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
             Tipo = string.Empty;
             Fecha = DateTime.MinValue;
             Informacion = string.Empty;
-            Usuarios = new Usuario();
-        }
-
-        public EventoLog(IDataReader lector)
-        {
-            IdLogs = lector.GetInt32(0);
-            Tipo = lector.GetString(1);
-            Fecha = lector.GetDateTime(2);
-            Informacion = lector.GetString(3);
-            Usuarios = new Usuario();
-            Usuarios.IdUsuario = lector.GetInt32(4);
+            Usuario = new Usuario();
         }
     }
 }

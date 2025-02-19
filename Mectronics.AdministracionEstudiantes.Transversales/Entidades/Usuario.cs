@@ -64,18 +64,5 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
             Roles = new Rol();
             Fecha = DateTime.MinValue;
         }
-
-        public Usuario(IDataReader lector)
-        {
-            IdUsuario = lector.GetInt32(0);
-            Nombres = lector.GetString(1);
-            Apellidos = lector.GetString(2);
-            Edad = lector.GetInt32(3);
-            CorreoElectronico = lector.GetString(4);
-            Contrasena = lector.GetString(5);
-            Roles = new Rol();
-            Roles.IdRol = lector.GetInt32(6);
-            Fecha = lector.GetDateTime(7);
-        }
     }
 }
