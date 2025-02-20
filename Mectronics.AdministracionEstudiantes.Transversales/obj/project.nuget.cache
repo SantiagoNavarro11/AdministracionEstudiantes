@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "h9eefXE0KLo=",
+  "dgSpecHash": "zSz3kDt3vV0=",
   "success": true,
   "projectFilePath": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Transversales\\Mectronics.AdministracionEstudiantes.Transversales.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\LENOVO\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Mectronics.AdministracionEstudiantes.Repositorio\Mectronics.AdministracionEstudiantes.Repositorio.csproj" />
+		<ProjectReference Include="..\Mectronics.AdministracionEstudiantes.Servicio\Mectronics.AdministracionEstudiantes.Servicio.csproj" />
+		<ProjectReference Include="..\Mectronics.AdministracionEstudiantes.Transversales\Mectronics.AdministracionEstudiantes.Transversales.csproj" />
+	</ItemGroup>
+
+</Project>

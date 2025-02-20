@@ -28,92 +28,6 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
         {
             _conexion = conexion;
         }
-
-        /// <summary>
-        /// Inserta un nuevo rol en la base de datos.
-        /// </summary>
-        /// <param name="objEntidad">Entidad <see cref="Rol"/> que se desea insertar.</param>
-        /// <returns>Número de filas afectadas en la base de datos.</returns>
-        public int Insertar(Rol objEntidad)
-        {
-            string strComandoSql = "INSERT INTO Rol (Nombre) VALUES (@Nombre)";
-            int filasAfectadas = 0;
-
-            try
-            {
-                _conexion.LimpiarParametros();
-                _conexion.AgregarParametro("@Nombre", objEntidad.Nombre, SqlDbType.VarChar);
-                _conexion.AbrirConexion();
-                filasAfectadas = _conexion.EjecutarComando(strComandoSql);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al insertar el rol en la base de datos.", ex);
-            }
-            finally
-            {
-                _conexion.CerrarConexion();
-            }
-            return filasAfectadas;
-        }
-
-        /// <summary>
-        /// Modifica un rol existente en la base de datos.
-        /// </summary>
-        /// <param name="objEntidad">Entidad <see cref="Rol"/> con los datos actualizados.</param>
-        /// <returns>Número de filas afectadas en la base de datos.</returns>
-        public int Modificar(Rol objEntidad)
-        {
-            string strComandoSql = "UPDATE Rol SET Nombre = @Nombre WHERE IdRol = @IdRol";
-            int filasAfectadas = 0;
-
-            try
-            {
-                _conexion.LimpiarParametros();
-                _conexion.AgregarParametro("@IdRol", objEntidad.IdRol, SqlDbType.Int);
-                _conexion.AgregarParametro("@Nombre", objEntidad.Nombre, SqlDbType.VarChar);
-                _conexion.AbrirConexion();
-                filasAfectadas = _conexion.EjecutarComando(strComandoSql);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al modificar el rol en la base de datos.", ex);
-            }
-            finally
-            {
-                _conexion.CerrarConexion();
-            }
-            return filasAfectadas;
-        }
-
-        /// <summary>
-        /// Elimina un rol de la base de datos.
-        /// </summary>
-        /// <param name="IdRol">Identificador del rol a eliminar.</param>
-        /// <returns>True si la eliminación fue exitosa, False en caso contrario.</returns>
-        public int Eliminar(int IdRol)
-        {
-            string strComandoSql = "DELETE FROM Rol WHERE IdRol = @IdRol";
-            int filasAfectadas = 0;
-
-            try
-            {
-                _conexion.LimpiarParametros();
-                _conexion.AgregarParametro("@IdRol", IdRol, SqlDbType.Int);
-                _conexion.AbrirConexion();
-                filasAfectadas = _conexion.EjecutarComando(strComandoSql);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al eliminar el rol de la base de datos.", ex);
-            }
-            finally
-            {
-                _conexion.CerrarConexion();
-            }
-            return filasAfectadas;
-        }
-
         /// <summary>
         /// Consulta un rol específico en la base de datos.
         /// </summary>
@@ -122,7 +36,7 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
         public Rol Consultar(RolFiltro objEntidad)
         {
             Rol rol = null;
-            string consultaSql = "SELECT IdRol, Nombre FROM Rol WHERE IdRol = @IdRol";
+            string consultaSql = "SELECT IdRol, NombreRol FROM Roles WHERE IdRol = @IdRol";
 
             try
             {
@@ -150,15 +64,22 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
         /// </summary>
         /// <param name="objEntidad">Filtro opcional para la búsqueda de roles.</param>
         /// <returns>Lista de entidades <see cref="Rol"/>.</returns>
-        public List<Rol> ConsultarListado(RolFiltro objEntidad)
+        public List<Rol> ConsultarListado(RolFiltro filtro)
         {
             List<Rol> roles = new List<Rol>();
-            string consultaSql = "SELECT IdRol, Nombre FROM Rol";
+            string consultaSql = "SELECT r.IdRol, r.NombreRol FROM Roles r WHERE r.NombreRol LIKE @NombreRol";
+
+            if (filtro.IdRol > 0)
+            {
+                consultaSql += " AND r.IdRol = @IdRol";
+            }
 
             try
             {
                 _conexion.LimpiarParametros();
-                _conexion.AbrirConexion();
+                _conexion.AgregarParametro("@IdRol", filtro.IdRol, SqlDbType.Int);
+                _conexion.AgregarParametro("@NombreRol", $"%{filtro.Nombre}%", SqlDbType.VarChar);
+
                 using (IDataReader resultado = _conexion.EjecutarConsulta(consultaSql))
                 {
                     roles = RolMapeo.MapearLista(resultado);
@@ -172,7 +93,10 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
             {
                 _conexion.CerrarConexion();
             }
+
             return roles;
         }
+
+
     }
 }

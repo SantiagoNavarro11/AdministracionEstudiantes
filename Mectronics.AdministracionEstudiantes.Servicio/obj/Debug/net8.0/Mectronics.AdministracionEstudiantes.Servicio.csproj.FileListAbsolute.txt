@@ -1,0 +1,16 @@
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Servicio\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.Servicio.csproj.AssemblyReference.cache
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Servicio\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.Servicio.GeneratedMSBuildEditorConfig.editorconfig
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Servicio\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.Servicio.AssemblyInfoInputs.cache
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Servicio\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.Servicio.AssemblyInfo.cs
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Servicio\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.Servicio.csproj.CoreCompileInputs.cache
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Servicio\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.Servicio.sourcelink.json
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Servicio\bin\Debug\net8.0\Mectronics.AdministracionEstudiantes.Servicio.deps.json
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Servicio\bin\Debug\net8.0\Mectronics.AdministracionEstudiantes.Servicio.dll
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Servicio\bin\Debug\net8.0\Mectronics.AdministracionEstudiantes.Servicio.pdb
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Servicio\bin\Debug\net8.0\Mectronics.AdministracionEstudiantes.Transversales.dll
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Servicio\bin\Debug\net8.0\Mectronics.AdministracionEstudiantes.Transversales.pdb
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Servicio\obj\Debug\net8.0\Mectroni.0089258B.Up2Date
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Servicio\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.Servicio.dll
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Servicio\obj\Debug\net8.0\refint\Mectronics.AdministracionEstudiantes.Servicio.dll
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Servicio\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.Servicio.pdb
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Servicio\obj\Debug\net8.0\ref\Mectronics.AdministracionEstudiantes.Servicio.dll

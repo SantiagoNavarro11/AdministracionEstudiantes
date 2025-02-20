@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Mectronics.AdministracionEstudiantes.MS.Rol</name>
+    </assembly>
+    <members>
+        <member name="T:Mectronics.AdministracionEstudiantes.MS.Rol.Controllers.RolController">
+            <summary>
+            Controlador para la gestión de roles en el sistema.
+            </summary>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.Rol.Controllers.RolController.#ctor(Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IRol.IRolServicio)">
+            <summary>
+            Constructor del controlador de roles.
+            </summary>
+            <param name="rolServicio">Interfaz de servicio de roles.</param>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.Rol.Controllers.RolController.Consultar(System.Int32)">
+            <summary>
+            Consulta un rol por su ID.
+            </summary>
+            <param name="id">Identificador del rol.</param>
+            <returns>Objeto RolDto con la información del rol consultado.</returns>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.Rol.Controllers.RolController.ConsultarLista(Mectronics.AdministracionEstudiantes.Transversales.Filtros.RolFiltro)">
+            <summary>
+            Consulta una lista de roles basada en filtros.
+            </summary>
+            <param name="filtro">Parámetros de filtrado para la consulta de roles.</param>
+            <returns>Lista de objetos RolDto.</returns>
+        </member>
+    </members>
+</doc>

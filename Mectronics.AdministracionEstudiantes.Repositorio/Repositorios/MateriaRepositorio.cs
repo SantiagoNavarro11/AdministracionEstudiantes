@@ -1,4 +1,5 @@
 ﻿using Mectronics.AdministracionEstudiantes.Transversales;
+using Mectronics.AdministracionEstudiantes.Transversales.Dtos;
 using Mectronics.AdministracionEstudiantes.Transversales.Entidades;
 using Mectronics.AdministracionEstudiantes.Transversales.Filtros;
 using Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IMateria;
@@ -41,7 +42,7 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
             {
                 _conexion.LimpiarParametros();
                 _conexion.AgregarParametro("@NombreMateria", objEntidad.Nombre, SqlDbType.VarChar);
-                _conexion.AgregarParametro("@NumeroCreditosMateria", objEntidad.NumeroCreditos, SqlDbType.Int);
+                _conexion.AgregarParametro("@NumeroCreditosMateria", 3, SqlDbType.Int);
                 _conexion.AgregarParametro("@IdUsuarioProfesor", objEntidad.IdUsuarioProfesor, SqlDbType.Int);
                 _conexion.AbrirConexion();
                 filasAfectadas = _conexion.EjecutarComando(strComandoSql);
@@ -64,19 +65,35 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
         /// <returns>Número de filas afectadas.</returns>
         public int Modificar(Materia objEntidad)
         {
-            string strComandoSql = @"UPDATE Materias SET NombreMateria = @NombreMateria, NumeroCreditosMateria = @NumeroCreditosMateria, IdUsuarioProfesor = @IdUsuarioProfesor 
-                                     WHERE IdMateria = @IdMateria";
+            string strComandoSql = @"UPDATE Materias 
+                             SET NombreMateria = @Nombre, 
+                                 NumeroCreditosMateria = @NumeroCreditosMateria, 
+                                 IdUsuarioProfesor = @IdUsuarioProfesor 
+                             WHERE IdMateria = @IdMateria";
             int filasAfectadas = 0;
 
             try
             {
+                if (objEntidad == null)
+                    throw new ArgumentNullException("El objeto Materia no puede ser nulo.");
+
+                if (objEntidad.IdMateria <= 0)
+                    throw new ArgumentException("El IdMateria debe ser un valor válido mayor que 0.");
+
+                if (string.IsNullOrWhiteSpace(objEntidad.Nombre))
+                    throw new ArgumentException("El NombreMateria no puede estar vacío.");
+
                 _conexion.LimpiarParametros();
                 _conexion.AgregarParametro("@IdMateria", objEntidad.IdMateria, SqlDbType.Int);
-                _conexion.AgregarParametro("@NombreMateria", objEntidad.Nombre, SqlDbType.VarChar);
+                _conexion.AgregarParametro("@Nombre", objEntidad.Nombre, SqlDbType.VarChar);
                 _conexion.AgregarParametro("@NumeroCreditosMateria", objEntidad.NumeroCreditos, SqlDbType.Int);
                 _conexion.AgregarParametro("@IdUsuarioProfesor", objEntidad.IdUsuarioProfesor, SqlDbType.Int);
                 _conexion.AbrirConexion();
+
                 filasAfectadas = _conexion.EjecutarComando(strComandoSql);
+
+                if (filasAfectadas == 0)
+                    throw new Exception("No se actualizó ninguna fila. Verifica que el IdMateria existe en la base de datos.");
             }
             catch (Exception ex)
             {
@@ -88,6 +105,7 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
             }
             return filasAfectadas;
         }
+
 
         /// <summary>
         /// Elimina una materia de la base de datos.
@@ -130,7 +148,7 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
             try
             {
                 _conexion.LimpiarParametros();
-                _conexion.AgregarParametro("@IdMateria", objMateria, SqlDbType.Int);
+                _conexion.AgregarParametro("@IdMateria", objMateria.IdMateria, SqlDbType.Int);
                 _conexion.AbrirConexion();
                 using (IDataReader resultado = _conexion.EjecutarConsulta(consultaSql))
                 {
@@ -155,11 +173,23 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
         public List<Materia> ConsultarListado(MateriaFiltro objMateria)
         {
             List<Materia> materias = new List<Materia>();
-            string consultaSql = "SELECT IdMateria, NombreMateria, NumeroCreditosMateria, IdUsuarioProfesor FROM Materias";
+            string consultaSql = @" SELECT m.IdMateria, m.NombreMateria, m.NumeroCreditosMateria, m.IdUsuarioProfesor FROM Materias m INNER JOIN Usuarios u ON m.IdUsuarioProfesor = u.IdUsuario";
+
+            if (objMateria.IdMateria > 0)
+            {
+                consultaSql += " AND m.IdMateria = @IdMateria";
+            }
+
+            if (!string.IsNullOrWhiteSpace(objMateria.Nombre))
+            {
+                consultaSql += " AND m.NombreMateria LIKE @NombreMateria";
+            }
 
             try
             {
                 _conexion.LimpiarParametros();
+                _conexion.AgregarParametro("@IdMateria", objMateria.IdMateria, SqlDbType.Int);
+                _conexion.AgregarParametro("@NombreMateria", "%" + objMateria.Nombre + "%", SqlDbType.VarChar);
                 _conexion.AbrirConexion();
                 using (IDataReader resultado = _conexion.EjecutarConsulta(consultaSql))
                 {
@@ -176,5 +206,7 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
             }
             return materias;
         }
+
+
     }
 }

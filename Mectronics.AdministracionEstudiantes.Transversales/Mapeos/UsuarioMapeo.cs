@@ -1,4 +1,5 @@
-﻿using Mectronics.AdministracionEstudiantes.Transversales.Entidades;
+﻿using AutoMapper;
+using Mectronics.AdministracionEstudiantes.Transversales.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Mectronics.AdministracionEstudiantes.Transversales.Mapeos
 {
-    public class UsuarioMapeo
+    public class UsuarioMapeo : Profile
     {
         public static Usuario Mapear(IDataReader lector)
         {
@@ -59,7 +60,7 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Mapeos
                     Contrasena = lector.GetString(5),
                     Roles = new Rol
                     {
-                        IdRol = lector.GetInt32(6)
+                        IdRol = Convert.ToInt32(lector.GetInt32(6)),
                     },
                     Fecha = lector.GetDateTime(7),
                 });

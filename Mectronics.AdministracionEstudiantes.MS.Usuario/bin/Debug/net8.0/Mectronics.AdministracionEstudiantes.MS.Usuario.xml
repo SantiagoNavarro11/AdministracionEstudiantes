@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Mectronics.AdministracionEstudiantes.MS.Usuario</name>
+    </assembly>
+    <members>
+        <member name="T:Mectronics.AdministracionEstudiantes.MS.Usuario.Controllers.UsuarioController">
+            <summary>
+            Controlador para la gestión de usuarios.
+            </summary>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.Usuario.Controllers.UsuarioController.#ctor(Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IUsuario.IUsuarioServicio)">
+            <summary>
+            Constructor del controlador de usuarios.
+            </summary>
+            <param name="usuarioServicio">Servicio de usuarios inyectado.</param>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.Usuario.Controllers.UsuarioController.Insertar(Mectronics.AdministracionEstudiantes.Transversales.Dtos.UsuarioDto)">
+            <summary>
+            Inserta un nuevo usuario.
+            </summary>
+            <param name="usuarioDto">Datos del usuario a insertar.</param>
+            <returns>Respuesta con el usuario creado.</returns>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.Usuario.Controllers.UsuarioController.Actualizar(Mectronics.AdministracionEstudiantes.Transversales.Dtos.UsuarioDto)">
+            <summary>
+            Actualiza un usuario existente.
+            </summary>
+            <param name="usuarioDto">Datos del usuario a actualizar.</param>
+            <returns>Respuesta con el usuario actualizado.</returns>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.Usuario.Controllers.UsuarioController.Eliminar(System.Int32)">
+            <summary>
+            Elimina un usuario por su ID.
+            </summary>
+            <param name="id">ID del usuario a eliminar.</param>
+            <returns>Respuesta con el resultado de la eliminación.</returns>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.Usuario.Controllers.UsuarioController.Consultar(System.Int32)">
+            <summary>
+            Consulta un usuario por su ID.
+            </summary>
+            <param name="id">ID del usuario a consultar.</param>
+            <returns>Respuesta con el usuario consultado.</returns>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.Usuario.Controllers.UsuarioController.ConsultarLista(Mectronics.AdministracionEstudiantes.Transversales.Filtros.UsuarioFiltro)">
+            <summary>
+            Consulta una lista de usuarios con filtros opcionales.
+            </summary>
+            <param name="filtro">Filtros de búsqueda de usuarios.</param>
+            <returns>Lista de usuarios encontrados.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,8 @@
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.csproj.AssemblyReference.cache
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.GeneratedMSBuildEditorConfig.editorconfig
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.AssemblyInfoInputs.cache
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.AssemblyInfo.cs
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.csproj.CoreCompileInputs.cache
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.MvcApplicationPartsAssemblyInfo.cs
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.MvcApplicationPartsAssemblyInfo.cache
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.sourcelink.json

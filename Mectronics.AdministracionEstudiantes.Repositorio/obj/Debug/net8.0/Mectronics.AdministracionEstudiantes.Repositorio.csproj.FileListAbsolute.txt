@@ -10,3 +10,7 @@ E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEs
 E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Repositorio\obj\Debug\net8.0\refint\Mectronics.AdministracionEstudiantes.Repositorio.dll
 E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Repositorio\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.Repositorio.pdb
 E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Repositorio\obj\Debug\net8.0\ref\Mectronics.AdministracionEstudiantes.Repositorio.dll
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Repositorio\bin\Debug\net8.0\Mectronics.AdministracionEstudiantes.Transversales.dll
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Repositorio\bin\Debug\net8.0\Mectronics.AdministracionEstudiantes.Transversales.pdb
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Repositorio\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.Repositorio.csproj.AssemblyReference.cache
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.Repositorio\obj\Debug\net8.0\Mectroni.5DEC4F36.Up2Date

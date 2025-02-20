@@ -37,8 +37,6 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
         {
             IdMateria = 0;
             Nombre = string.Empty;
-            NumeroCreditos = 0;
-            IdUsuarioProfesor = 0;
         }
     }
 }

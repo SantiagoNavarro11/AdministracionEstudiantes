@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Mectronics.AdministracionEstudiantes.MS.Usuario.props" />
+</Project>

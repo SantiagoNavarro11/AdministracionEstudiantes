@@ -26,9 +26,9 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
         }
         public int Insertar(Usuario objEntidad)
         {
-            string strComandoSql = @"INSERT INTO Usuarios (Nombres, Apellidos, Edad, CorreoElectronico, Contrasena, IdRoles, Fecha) 
-                     VALUES (@Nombres, @Apellidos, @Edad, @CorreoElectronico, @Contrasena,@IdRoles,@Fecha)";
-            int filasAfectadas = 0;
+            string strComandoSql = @"INSERT INTO Usuarios (Nombres, Apellidos, Edad, CorreoElectronico, Contrasena, IdRol, Fecha) 
+                     VALUES (@Nombres, @Apellidos, @Edad, @CorreoElectronico, @Contrasena,@IdRol,@Fecha) SELECT SCOPE_IDENTITY();";
+            int IdUsuario = 0;
 
             try
             {
@@ -36,12 +36,13 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
                 _conexion.AgregarParametro("@Nombres", objEntidad.Nombres, SqlDbType.VarChar);
                 _conexion.AgregarParametro("@Apellidos", objEntidad.Apellidos, SqlDbType.VarChar);
                 _conexion.AgregarParametro("@Edad", objEntidad.Edad, SqlDbType.Int);
-                _conexion.AgregarParametro("@CorreoElectronico", objEntidad.CorreoElectronico, SqlDbType.VarChar);
+                _conexion.AgregarParametro("@CorreoEle ctronico", objEntidad.CorreoElectronico, SqlDbType.VarChar);
                 _conexion.AgregarParametro("@Contrasena", objEntidad.Contrasena, SqlDbType.VarChar);
-                _conexion.AgregarParametro("@IdRoles", objEntidad.Roles.IdRol, SqlDbType.VarChar);
+                _conexion.AgregarParametro("@IdRol", objEntidad.Roles.IdRol, SqlDbType.VarChar);
                 _conexion.AgregarParametro("@Fecha", objEntidad.Fecha, SqlDbType.Date);
                 _conexion.AbrirConexion();
-                filasAfectadas = _conexion.EjecutarComando(strComandoSql);
+                object resultado = _conexion.EjecutarEscalarSql(strComandoSql);
+                IdUsuario = Convert.ToInt32(resultado);
             }
             catch (Exception ex)
             {
@@ -51,7 +52,7 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
             {
                 _conexion.CerrarConexion();
             }
-            return filasAfectadas;
+            return IdUsuario;
         }
 
         public int Modificar(Usuario objEntidad)
@@ -107,16 +108,20 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
             return filasAfectadas;
         }
 
-        public Usuario Consultar(int IdUsuario)
+        public Usuario Consultar(UsuarioFiltro usuarioFiltro)
         {
             Usuario usuario = null;
-            string consultaSql = "SELECT IdUsuario, Nombres, Apellidos, Edad, CorreoElectronico, Contrasena, IdRoles, Fecha FROM Usuarios WHERE IdUsuario = @IdUsuario";
+            string consultaSql = "SELECT U.IdUsuario, U.Nombres, U.Apellidos, U.Edad, U.CorreoElectronico, U.Contrasena, R.NombreRol AS Rol, U.Fecha " +
+                "FROM Usuarios U INNER JOIN Roles R ON U.IdRoles = R.IdRol WHERE U.IdUsuario = @IdUsuario AND U.Apellidos = @Apellidos AND U.CorreoElectronico = @CorreoElectronico;";
 
             try
             {
                 _conexion.LimpiarParametros();
-                _conexion.AgregarParametro("@IdUsuario", IdUsuario, SqlDbType.Int);
-                _conexion.AbrirConexion();
+                _conexion.AgregarParametro("@IdUsuario", usuarioFiltro.IdUsuario, SqlDbType.Int);
+                _conexion.AgregarParametro("@Apellidos", usuarioFiltro.Apellidos, SqlDbType.VarChar);
+                _conexion.AgregarParametro("@CorreoElectronico", usuarioFiltro.CorreoElectronico, SqlDbType.VarChar);
+
+                //_conexion.AbrirConexion();
                 using (IDataReader resultado = _conexion.EjecutarConsulta(consultaSql))
                 {
                     usuario = UsuarioMapeo.Mapear(resultado);
@@ -133,15 +138,30 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
             return usuario;
         }
 
-        public List<Usuario> ConsultarListado()
+
+        public List<Usuario> ConsultarListado(UsuarioFiltro filtro)
         {
             List<Usuario> usuarios = new List<Usuario>();
-            string consultaSql = "SELECT IdUsuario, Nombres, Apellidos, Edad, CorreoElectronico, Contrasena, IdRoles, Fecha FROM Usuarios";
+            string consultaSql = "SELECT u.IdUsuario, u.Nombres, u.Apellidos, u.Edad, u.CorreoElectronico, u.Contrasena, u.IdRoles, u.Fecha " +
+                                 "FROM Usuarios u WHERE u.Apellidos LIKE @Apellidos";
+
+            if (!string.IsNullOrEmpty(filtro.CorreoElectronico))
+            {
+                consultaSql += " AND u.CorreoElectronico LIKE @CorreoElectronico";
+            }
+
+            if (filtro.IdUsuario > 0)
+            {
+                consultaSql += " AND u.IdUsuario = @IdUsuario";
+            }
 
             try
             {
                 _conexion.LimpiarParametros();
-                _conexion.AbrirConexion();
+                _conexion.AgregarParametro("@Apellidos", $"%{filtro.Apellidos}%", SqlDbType.VarChar);
+                _conexion.AgregarParametro("@CorreoElectronico", $"%{filtro.CorreoElectronico}%", SqlDbType.VarChar);
+                _conexion.AgregarParametro("@IdUsuario", filtro.IdUsuario, SqlDbType.Int);
+
                 using (IDataReader resultado = _conexion.EjecutarConsulta(consultaSql))
                 {
                     usuarios = UsuarioMapeo.MapearLista(resultado);
@@ -149,13 +169,15 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al consultar la lista de Usuarios en la base de datos.", ex);
+                throw new Exception("Error al consultar la lista de usuarios en la base de datos.", ex);
             }
             finally
             {
                 _conexion.CerrarConexion();
             }
+
             return usuarios;
         }
+
     }
 }

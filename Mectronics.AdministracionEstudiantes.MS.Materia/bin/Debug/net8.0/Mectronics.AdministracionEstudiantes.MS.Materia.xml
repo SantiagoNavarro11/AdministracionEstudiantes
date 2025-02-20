@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Mectronics.AdministracionEstudiantes.MS.Materia</name>
+    </assembly>
+    <members>
+        <member name="T:Mectronics.AdministracionEstudiantes.MS.Materia.Controllers.MateriaController">
+            <summary>
+            Controlador para la gestión de materias en la API.
+            Proporciona operaciones para insertar, actualizar, eliminar y consultar materias.
+            </summary>
+        </member>
+        <member name="F:Mectronics.AdministracionEstudiantes.MS.Materia.Controllers.MateriaController._materiaServicio">
+            <summary>
+            Servicio de materias para manejar la lógica de negocio.
+            </summary>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.Materia.Controllers.MateriaController.#ctor(Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IMateria.IMateriaServicio)">
+            <summary>
+            Inicializa una nueva instancia del <see cref="T:Mectronics.AdministracionEstudiantes.MS.Materia.Controllers.MateriaController"/> con el servicio inyectado.
+            </summary>
+            <param name="materiaServicio">Instancia del servicio de materias.</param>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.Materia.Controllers.MateriaController.Insertar(Mectronics.AdministracionEstudiantes.Transversales.Dtos.MateriaDto)">
+            <summary>
+            Crea una nueva materia en el sistema.
+            </summary>
+            <param name="materiaDto">Objeto <see cref="T:Mectronics.AdministracionEstudiantes.Transversales.Dtos.MateriaDto"/> con la información de la materia a insertar.</param>
+            <returns>Respuesta con la materia creada.</returns>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.Materia.Controllers.MateriaController.Actualizar(Mectronics.AdministracionEstudiantes.Transversales.Dtos.MateriaDto)">
+            <summary>
+            Actualiza una materia existente en el sistema.
+            </summary>
+            <param name="materiaDto">Objeto <see cref="T:Mectronics.AdministracionEstudiantes.Transversales.Dtos.MateriaDto"/> con la información actualizada.</param>
+            <returns>Respuesta con la materia actualizada.</returns>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.Materia.Controllers.MateriaController.Eliminar(System.Int32)">
+            <summary>
+            Elimina una materia del sistema por su identificador.
+            </summary>
+            <param name="id">Identificador único de la materia a eliminar.</param>
+            <returns>Respuesta con el resultado de la eliminación.</returns>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.Materia.Controllers.MateriaController.Consultar(System.Int32)">
+            <summary>
+            Consulta una materia específica por su identificador.
+            </summary>
+            <param name="id">Identificador único de la materia a consultar.</param>
+            <returns>Objeto <see cref="T:Mectronics.AdministracionEstudiantes.Transversales.Dtos.MateriaDto"/> con la información de la materia consultada.</returns>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.Materia.Controllers.MateriaController.ConsultarLista(Mectronics.AdministracionEstudiantes.Transversales.Filtros.MateriaFiltro)">
+            <summary>
+            Consulta una lista de materias basadas en los filtros proporcionados.
+            </summary>
+            <param name="filtro">Objeto <see cref="T:Mectronics.AdministracionEstudiantes.Transversales.Filtros.MateriaFiltro"/> con los criterios de búsqueda.</param>
+            <returns>Lista de materias encontradas.</returns>
+        </member>
+    </members>
+</doc>
