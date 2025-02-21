@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Mectronics.AdministracionEstudiantes.MS.EventoLog</name>
+    </assembly>
+    <members>
+        <member name="T:Mectronics.AdministracionEstudiantes.MS.EventoLog.Controllers.EventoLogController">
+            <summary>
+            Controlador para la gestión de eventos de log.
+            </summary>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.EventoLog.Controllers.EventoLogController.#ctor(Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IEventoLog.IEventoLogServicio)">
+            <summary>
+            Constructor del controlador EventoLogController.
+            </summary>
+            <param name="eventoLogServicio">Servicio de eventos de log.</param>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.EventoLog.Controllers.EventoLogController.Insertar(Mectronics.AdministracionEstudiantes.Transversales.Dtos.EventoLogDto)">
+            <summary>
+            Inserta un nuevo evento de log.
+            </summary>
+            <param name="eventoLogDto">Objeto con los datos del evento de log a insertar.</param>
+            <returns>Devuelve un objeto con el estado de la operación y los datos insertados.</returns>
+            <response code="200">Evento insertado exitosamente.</response>
+            <response code="400">Error en la inserción del evento.</response>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.EventoLog.Controllers.EventoLogController.ConsultarLista(Mectronics.AdministracionEstudiantes.Transversales.Filtros.EventoLogFiltro)">
+            <summary>
+            Consulta una lista de eventos de log con filtros opcionales.
+            </summary>
+            <param name="filtro">Filtros de búsqueda para los eventos de log.</param>
+            <returns>Lista de eventos de log.</returns>
+            <response code="200">Registros consultados exitosamente.</response>
+            <response code="404">No se encontraron registros.</response>
+            <response code="400">Error en la consulta.</response>
+        </member>
+    </members>
+</doc>

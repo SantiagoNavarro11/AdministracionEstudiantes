@@ -1,4 +1,5 @@
-﻿using Mectronics.AdministracionEstudiantes.Transversales.Entidades;
+﻿using AutoMapper;
+using Mectronics.AdministracionEstudiantes.Transversales.Entidades;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Mectronics.AdministracionEstudiantes.Transversales.Mapeos
 {
-    public class EventoLogMapeo
+    public class EventoLogMapeo : Profile
     {
         public static EventoLog Mapear(IDataReader lector)
         {

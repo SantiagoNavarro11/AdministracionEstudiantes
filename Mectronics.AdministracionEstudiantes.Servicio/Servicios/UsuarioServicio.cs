@@ -68,7 +68,7 @@ namespace Mectronics.AdministracionEstudiantes.Servicio.Servicios
         {
             Usuario usuario = _mapeo.Map<Usuario>(usuarioDto);
 
-            ValidarDatos(usuario);
+           // ValidarDatos(usuario);
 
             usuarioDto.IdUsuario = _repositorioUsuario.Insertar(usuario);
 
@@ -80,9 +80,9 @@ namespace Mectronics.AdministracionEstudiantes.Servicio.Servicios
             Usuario usuario = _mapeo.Map<Usuario>(usuarioDto);
 
             if (usuario.IdUsuario <= 0)
-                throw new ArgumentException("El ID de la tienda es inválido.");
+                throw new ArgumentException("El ID del Usuario es inválido.");
 
-            ValidarDatos(usuario);
+            //ValidarDatos(usuario);
 
             int actualizo = _repositorioUsuario.Modificar(usuario);
 
@@ -90,37 +90,6 @@ namespace Mectronics.AdministracionEstudiantes.Servicio.Servicios
                 throw new ArgumentException("El registro no se actualizo.");
 
             return usuarioDto;
-        }
-        private void ValidarDatos(Usuario usuario)
-        {
-            if (usuario == null)
-                throw new ArgumentNullException("La registro no puede ser nulo.");
-
-            if (string.IsNullOrWhiteSpace(usuario.Nombres))
-                throw new ArgumentException("El nombre de la tienda no puede estar vacío.");
-
-            if (string.IsNullOrWhiteSpace(usuario.Apellidos))
-                throw new ArgumentException("La dirección de la tienda no puede estar vacía.");
-
-
-            if (usuario.Edad == null || usuario.Edad <= 0)
-                throw new ArgumentException("Debe asignarse una zona válida a la tienda.");
-
-            if (string.IsNullOrWhiteSpace(usuario.Contrasena))
-                throw new ArgumentException("El teléfono de la tienda no puede estar vacío.");
-
-
-            if (string.IsNullOrWhiteSpace(usuario.CorreoElectronico))
-                throw new ArgumentException("El teléfono de la tienda no puede estar vacío.");
-
-
-            if (usuario.Roles.IdRol == null || usuario.Roles.IdRol <= 0)
-                throw new ArgumentException("Debe asignarse una zona válida a la tienda.");
-
-
-            //if (DateOnly.IsNullOrWhiteSpace(usuario.Fecha))
-            //    throw new ArgumentException("El teléfono de la tienda no puede estar vacío.");
-
         }
 
     }

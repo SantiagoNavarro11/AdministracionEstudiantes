@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "API de Tiendas",
+    "title": "API de estudiantes.",
     "description": "API para la gestión de gestion de estudiantes.",
     "contact": {
       "name": "Soporte API",
@@ -10,48 +10,6 @@
     "version": "v1"
   },
   "paths": {
-    "/api/Rol/{id}": {
-      "get": {
-        "tags": [
-          "Rol"
-        ],
-        "summary": "Consulta un rol por su ID.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Identificador del rol.",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/RolDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RolDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RolDto"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/Rol": {
       "get": {
         "tags": [

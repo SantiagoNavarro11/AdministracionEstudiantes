@@ -27,47 +27,6 @@ namespace Mectronics.AdministracionEstudiantes.MS.Rol.Controllers
         }
 
         /// <summary>
-        /// Consulta un rol por su ID.
-        /// </summary>
-        /// <param name="id">Identificador del rol.</param>
-        /// <returns>Objeto RolDto con la información del rol consultado.</returns>
-        [HttpGet("{id}")]
-        public ActionResult<RolDto> Consultar(int id)
-        {
-            try
-            {
-                RolFiltro filtro = new RolFiltro { IdRol = id };
-                RolDto RolDto = _rolServicio.Consultar(filtro);
-
-                if (RolDto == null)
-                {
-                    return NotFound(new RespuestaDto
-                    {
-                        Exito = false,
-                        Mensaje = "No se encontró el rol solicitado.",
-                        Datos = null
-                    });
-                }
-
-                return Ok(new RespuestaDto
-                {
-                    Exito = true,
-                    Mensaje = "Registro consultado exitosamente.",
-                    Datos = RolDto
-                });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new RespuestaDto
-                {
-                    Exito = false,
-                    Mensaje = ex.Message,
-                    Datos = null
-                });
-            }
-        }
-
-        /// <summary>
         /// Consulta una lista de roles basada en filtros.
         /// </summary>
         /// <param name="filtro">Parámetros de filtrado para la consulta de roles.</param>

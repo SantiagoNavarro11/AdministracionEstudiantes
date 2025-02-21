@@ -22,6 +22,8 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Mapeos
             CreateMap<Rol, RolDto>().ReverseMap();
             CreateMap<Usuario, UsuarioDto>().ReverseMap();
             CreateMap<Materia, MateriaDto>().ReverseMap();
+            CreateMap<InscripcionMateria, InscripcionMateriaDto>().ReverseMap();
+            CreateMap<EventoLog, EventoLogDto>().ReverseMap();
         }
     }
 }

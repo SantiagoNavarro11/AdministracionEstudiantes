@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "2/dZOf7mDRUOxwL5N9VTKrlcbhCCMY414gPDRJemjr0=",
+  "Source": "Mectronics.AdministracionEstudiantes.MS.EventoLog",
+  "BasePath": "_content/Mectronics.AdministracionEstudiantes.MS.EventoLog",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

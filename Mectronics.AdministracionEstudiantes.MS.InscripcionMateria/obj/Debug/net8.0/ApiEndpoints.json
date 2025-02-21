@@ -1,0 +1,132 @@
+[
+  {
+    "ContainingType": "Mectronics.AdministracionEstudiantes.MS.InscripcionMateria.Controllers.InscripcionMateriaController",
+    "Method": "Insertar",
+    "RelativePath": "api/inscripcionMaterias",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inscripcionMateriaDto",
+        "Type": "Mectronics.AdministracionEstudiantes.Transversales.Dtos.InscripcionMateriaDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Mectronics.AdministracionEstudiantes.MS.InscripcionMateria.Controllers.InscripcionMateriaController",
+    "Method": "Actualizar",
+    "RelativePath": "api/inscripcionMaterias",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inscripcionMateriaDto",
+        "Type": "Mectronics.AdministracionEstudiantes.Transversales.Dtos.InscripcionMateriaDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Mectronics.AdministracionEstudiantes.MS.InscripcionMateria.Controllers.InscripcionMateriaController",
+    "Method": "ConsultarLista",
+    "RelativePath": "api/inscripcionMaterias",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdInscripcion",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Mectronics.AdministracionEstudiantes.Transversales.Dtos.InscripcionMateriaDto, Mectronics.AdministracionEstudiantes.Transversales, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Mectronics.AdministracionEstudiantes.MS.InscripcionMateria.Controllers.InscripcionMateriaController",
+    "Method": "Eliminar",
+    "RelativePath": "api/inscripcionMaterias/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Mectronics.AdministracionEstudiantes.MS.InscripcionMateria.Controllers.InscripcionMateriaController",
+    "Method": "Consultar",
+    "RelativePath": "api/inscripcionMaterias/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Mectronics.AdministracionEstudiantes.Transversales.Dtos.InscripcionMateriaDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

@@ -80,12 +80,6 @@ namespace Mectronics.AdministracionEstudiantes.Servicio
 
             if (materia.Nombre.Length < 3)
                 throw new ArgumentException("El nombre de la materia debe tener al menos 3 caracteres.");
-
-            if (materia.IdUsuarioProfesor == null || materia.IdUsuarioProfesor <= 0)
-                throw new ArgumentException("El ID del profesor debe ser un valor válido mayor que 0.");
-
-            if (materia.NumeroCreditos <= 0)
-                throw new ArgumentException("El número de créditos debe ser mayor a 0.");
         }
 
     }

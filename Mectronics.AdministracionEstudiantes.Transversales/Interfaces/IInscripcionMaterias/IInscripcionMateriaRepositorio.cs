@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IRepositorioInscripcionMaterias
+namespace Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IInscripcionMaterias
 {
     /// <summary>
     /// Interfaz que define las operaciones de acceso a datos para la entidad <see cref="InscripcionMateria"/>.
@@ -15,6 +15,7 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IReposit
     /// </summary>
     public interface IInscripcionMateriaRepositorio
     {
+        InscripcionMateria Consultar(InscripcionMateriaFiltro filtro);
         /// <summary>
         /// Inserta una nueva inscripción de materia en la base de datos.
         /// </summary>
@@ -40,6 +41,6 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IReposit
         /// Consulta el listado completo de inscripciones de materias en la base de datos.
         /// </summary>
         /// <returns>Retorna una lista de objetos <see cref="InscripcionMateria"/> con las inscripciones encontradas.</returns>
-        List<InscripcionMateria> ConsultarListado();
+        List<InscripcionMateria> ConsultarListado(InscripcionMateriaFiltro filtro);
     }
 }

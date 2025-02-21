@@ -3,6 +3,7 @@ using Mectronics.AdministracionEstudiantes.Transversales.Filtros;
 using Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IEventoLog;
 using Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IRepositorio;
 using Mectronics.AdministracionEstudiantes.Transversales.Mapeos;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -53,17 +54,29 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
 
             return filasAfectadas;
         }
-
         public List<EventoLog> ConsultarListado(EventoLogFiltro objEntidad)
         {
             List<EventoLog> eventos = new List<EventoLog>();
-            string consultaSql = "SELECT IdLogs, TipoLog, Fecha, Informacion ,IdUsuario FROM EventosLogs";
+            string consultaSql = @"SELECT e.IdLogs, e.TipoLog, e.Fecha, e.Informacion, e.IdUsuario 
+                           FROM EventosLogs e INNER JOIN Usuarios u ON e.IdUsuario = u.IdUsuario WHERE 1=1";
+
+            if (!string.IsNullOrWhiteSpace(objEntidad.TipoLog))
+            {
+                consultaSql += " AND e.TipoLog LIKE @TipoLog";
+            }
+
+            if (!objEntidad.Fecha.HasValue)
+            {
+                consultaSql += " AND e.Fecha = @Fecha";
+            }
 
             try
             {
                 _conexion.LimpiarParametros();
-                _conexion.AbrirConexion();
+                _conexion.AgregarParametro("@TipoLog", "%" + objEntidad.TipoLog + "%", SqlDbType.VarChar);
+                _conexion.AgregarParametro("@Fecha", objEntidad.Fecha ?? (object)DBNull.Value, SqlDbType.Date);
 
+                _conexion.AbrirConexion();
                 using (IDataReader resultado = _conexion.EjecutarConsulta(consultaSql))
                 {
                     eventos = EventoLogMapeo.MapearLista(resultado);
@@ -77,7 +90,6 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
             {
                 _conexion.CerrarConexion();
             }
-
             return eventos;
         }
     }

@@ -1,41 +1,24 @@
-﻿using Mectronics.AdministracionEstudiantes.Transversales;
-using Mectronics.AdministracionEstudiantes.Transversales.Entidades;
+﻿using Mectronics.AdministracionEstudiantes.Transversales.Entidades;
+using Mectronics.AdministracionEstudiantes.Transversales.Filtros;
+using Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IInscripcionMaterias;
 using Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IRepositorio;
-using Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IRepositorioInscripcionMaterias;
 using Mectronics.AdministracionEstudiantes.Transversales.Mapeos;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
 {
-    /// <summary>
-    /// Repositorio para la gestión de inscripciones de materias en la base de datos.
-    /// </summary>
     public class InscripcionMateriaRepositorio : IInscripcionMateriaRepositorio
     {
         private readonly IConexionBaseDatos _conexion;
 
-        /// <summary>
-        /// Constructor que inicializa el repositorio con una conexión a la base de datos.
-        /// </summary>
-        /// <param name="conexion">Instancia de conexión proporcionada por inyección de dependencias.</param>
         public InscripcionMateriaRepositorio(IConexionBaseDatos conexion)
         {
             _conexion = conexion;
         }
 
-        /// <summary>
-        /// Inserta una nueva inscripción de materia en la base de datos.
-        /// </summary>
-        /// <param name="objEntidad">Objeto que contiene la información de la inscripción.</param>
-        /// <returns>Número de filas afectadas por la operación.</returns>
         public int Insertar(InscripcionMateria objEntidad)
         {
-            string strComandoSql = @"INSERT INTO InscripcionMaterias (IdUsuario, IdMateria) VALUES (@IdUsuario, @IdMateria)";
+            string strComandoSql = "INSERT INTO InscripcionMaterias (IdUsuario, IdMateria) VALUES (@IdUsuario, @IdMateria)";
             int filasAfectadas = 0;
 
             try
@@ -57,14 +40,9 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
             return filasAfectadas;
         }
 
-        /// <summary>
-        /// Modifica una inscripción de materia existente en la base de datos.
-        /// </summary>
-        /// <param name="objEntidad">Objeto que contiene la información actualizada de la inscripción.</param>
-        /// <returns>Número de filas afectadas por la operación.</returns>
         public int Modificar(InscripcionMateria objEntidad)
         {
-            string strComandoSql = @"UPDATE InscripcionMaterias SET IdMateria = @IdMateria WHERE IdUsuario = @IdUsuario";
+            string strComandoSql = "UPDATE InscripcionMaterias SET IdMateria = @IdMateria WHERE IdUsuario = @IdUsuario";
             int filasAfectadas = 0;
 
             try
@@ -86,20 +64,15 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
             return filasAfectadas;
         }
 
-        /// <summary>
-        /// Elimina una inscripción de materia de la base de datos.
-        /// </summary>
-        /// <param name="IdUsuario">Identificador del usuario cuya inscripción será eliminada.</param>
-        /// <returns>Número de filas afectadas por la operación.</returns>
-        public int Eliminar(int IdUsuario)
+        public int Eliminar(int IdInscripcion)
         {
-            string strComandoSql = @"DELETE FROM InscripcionMaterias WHERE IdUsuario = @IdUsuario AND IdMateria = @IdMateria";
+            string strComandoSql = "DELETE FROM InscripcionMaterias WHERE IdInscripcion = @IdInscripcion";
             int filasAfectadas = 0;
 
             try
             {
                 _conexion.LimpiarParametros();
-                _conexion.AgregarParametro("@IdUsuario", IdUsuario, SqlDbType.Int);
+                _conexion.AgregarParametro("@IdInscripcion", IdInscripcion, SqlDbType.Int);
                 _conexion.AbrirConexion();
                 filasAfectadas = _conexion.EjecutarComando(strComandoSql);
             }
@@ -114,18 +87,51 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
             return filasAfectadas;
         }
 
-        /// <summary>
-        /// Consulta el listado de inscripciones de materias en la base de datos.
-        /// </summary>
-        /// <returns>Lista de inscripciones de materias registradas.</returns>
-        public List<InscripcionMateria> ConsultarListado()
+        public InscripcionMateria Consultar(InscripcionMateriaFiltro filtro)
         {
-            List<InscripcionMateria> inscripcionesMaterias = new List<InscripcionMateria>();
-            string consultaSql = @"SELECT IdUsuario, IdMateria FROM InscripcionMaterias";
+            InscripcionMateria inscripcionMateria = null;
+
+            string consultaSql = @"SELECT i.IdInscripcion,u.Nombres AS Usuario, m.NombreMateria AS Materia FROM InscripcionMaterias i INNER JOIN Usuarios u ON i.IdUsuario = u.IdUsuario INNER JOIN Materias m ON i.IdMateria = m.IdMateria WHERE i.IdInscripcion = @IdInscripcion";
 
             try
             {
                 _conexion.LimpiarParametros();
+                _conexion.AgregarParametro("@IdInscripcion", filtro.IdInscripcion, SqlDbType.Int);
+                _conexion.AbrirConexion();
+
+                using (IDataReader resultado = _conexion.EjecutarConsulta(consultaSql))
+                {
+                    inscripcionMateria = InscripcionMateriaMapeo.Mapear(resultado);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al consultar la inscripción en la base de datos.", ex);
+            }
+            finally
+            {
+                _conexion.CerrarConexion();
+            }
+            return inscripcionMateria;
+        }
+
+
+
+        public List<InscripcionMateria> ConsultarListado(InscripcionMateriaFiltro filtro)
+        {
+            List<InscripcionMateria> inscripcionesMaterias = new List<InscripcionMateria>();
+            string consultaSql = "SELECT i.IdInscripcion,u.Nombres AS Usuario,m.NombreMateria AS Materia FROM InscripcionMaterias i INNER JOIN Usuarios u ON i.IdUsuario = u.IdUsuario INNER JOIN Materias m ON i.IdMateria = m.IdMateria";
+
+            if (filtro.IdInscripcion > 0)
+            {
+                consultaSql += " AND IdInscripcion = @IdInscripcion";
+            }
+
+            try
+            {
+                _conexion.LimpiarParametros();
+
+                _conexion.AgregarParametro("@IdUsuario", filtro.IdInscripcion, SqlDbType.Int);
                 _conexion.AbrirConexion();
                 using (IDataReader resultado = _conexion.EjecutarConsulta(consultaSql))
                 {

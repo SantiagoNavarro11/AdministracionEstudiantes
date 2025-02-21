@@ -67,26 +67,16 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
         {
             string strComandoSql = @"UPDATE Materias 
                              SET NombreMateria = @Nombre, 
-                                 NumeroCreditosMateria = @NumeroCreditosMateria, 
                                  IdUsuarioProfesor = @IdUsuarioProfesor 
                              WHERE IdMateria = @IdMateria";
             int filasAfectadas = 0;
 
             try
             {
-                if (objEntidad == null)
-                    throw new ArgumentNullException("El objeto Materia no puede ser nulo.");
-
-                if (objEntidad.IdMateria <= 0)
-                    throw new ArgumentException("El IdMateria debe ser un valor válido mayor que 0.");
-
-                if (string.IsNullOrWhiteSpace(objEntidad.Nombre))
-                    throw new ArgumentException("El NombreMateria no puede estar vacío.");
-
                 _conexion.LimpiarParametros();
                 _conexion.AgregarParametro("@IdMateria", objEntidad.IdMateria, SqlDbType.Int);
                 _conexion.AgregarParametro("@Nombre", objEntidad.Nombre, SqlDbType.VarChar);
-                _conexion.AgregarParametro("@NumeroCreditosMateria", objEntidad.NumeroCreditos, SqlDbType.Int);
+                //_conexion.AgregarParametro("@NumeroCreditosMateria", objEntidad.NumeroCreditos, SqlDbType.Int);
                 _conexion.AgregarParametro("@IdUsuarioProfesor", objEntidad.IdUsuarioProfesor, SqlDbType.Int);
                 _conexion.AbrirConexion();
 

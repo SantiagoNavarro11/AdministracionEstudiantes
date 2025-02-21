@@ -116,12 +116,12 @@ namespace Mectronics.AdministracionEstudiantes.MS.Usuario.Controllers
         /// </summary>
         /// <param name="id">ID del usuario a consultar.</param>
         /// <returns>Respuesta con el usuario consultado.</returns>
-        [HttpGet("{Id}")]
-        public ActionResult<UsuarioDto> Consultar(int Id)
+        [HttpGet("{id}")]
+        public ActionResult<UsuarioDto> Consultar(int id)
         {
             try
             {
-                UsuarioFiltro filtro = new UsuarioFiltro { IdUsuario = Id };
+                UsuarioFiltro filtro = new UsuarioFiltro { IdUsuario = id };
                 UsuarioDto usuarioDto = _usuarioServicio.Consultar(filtro);
 
                 if (usuarioDto == null)

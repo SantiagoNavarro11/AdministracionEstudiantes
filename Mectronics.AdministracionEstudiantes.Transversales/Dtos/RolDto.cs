@@ -16,7 +16,7 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Dtos
         /// <summary>
         /// Nombre del rol.
         /// </summary>
-        public string ?Nombre { get; set; }
+        public string Nombre { get; set; }
 
         /// <summary>
         /// Constructor de la clase <see cref="Rol"/>.

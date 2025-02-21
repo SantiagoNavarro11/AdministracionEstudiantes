@@ -38,6 +38,8 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
         /// Constructor de la clase <see cref="EventoLog"/>.
         /// Inicializa una nueva instancia con valores predeterminados.
         /// </summary>
+        /// 
+
         public EventoLog()
         {
             IdLogs = 0;

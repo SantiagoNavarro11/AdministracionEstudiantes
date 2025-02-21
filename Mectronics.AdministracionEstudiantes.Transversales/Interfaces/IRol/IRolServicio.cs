@@ -10,7 +10,6 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IRol
 {
     public interface IRolServicio
     {
-        RolDto Consultar(RolFiltro rol);
         List<RolDto> ConsultarLista(RolFiltro rol);
     }
 }

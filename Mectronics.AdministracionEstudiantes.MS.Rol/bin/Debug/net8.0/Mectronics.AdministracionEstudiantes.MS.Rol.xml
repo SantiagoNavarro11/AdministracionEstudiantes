@@ -15,13 +15,6 @@
             </summary>
             <param name="rolServicio">Interfaz de servicio de roles.</param>
         </member>
-        <member name="M:Mectronics.AdministracionEstudiantes.MS.Rol.Controllers.RolController.Consultar(System.Int32)">
-            <summary>
-            Consulta un rol por su ID.
-            </summary>
-            <param name="id">Identificador del rol.</param>
-            <returns>Objeto RolDto con la información del rol consultado.</returns>
-        </member>
         <member name="M:Mectronics.AdministracionEstudiantes.MS.Rol.Controllers.RolController.ConsultarLista(Mectronics.AdministracionEstudiantes.Transversales.Filtros.RolFiltro)">
             <summary>
             Consulta una lista de roles basada en filtros.

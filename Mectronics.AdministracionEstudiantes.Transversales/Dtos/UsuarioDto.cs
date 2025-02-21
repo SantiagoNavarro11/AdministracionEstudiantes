@@ -47,5 +47,18 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Dtos
         /// Fecha de registro del usuario.
         /// </summary>
         public DateTime Fecha { get; set; }
+
+        public UsuarioDto()
+        {
+            IdUsuario = 0;
+            Nombres = string.Empty;
+            Apellidos = string.Empty;
+            Edad = 0;
+            CorreoElectronico = string.Empty;
+            Contrasena = string.Empty;
+            Roles = new Rol();
+            Fecha = DateTime.MinValue;
+        }
     }
+
 }

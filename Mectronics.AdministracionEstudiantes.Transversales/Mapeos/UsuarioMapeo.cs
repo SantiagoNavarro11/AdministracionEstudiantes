@@ -28,7 +28,7 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Mapeos
                 Contrasena = lector.GetString(5),
                 Roles = new Rol
                 {
-                    IdRol = lector.GetInt32(6)
+                    Nombre = lector.GetString(6)
                 },
                 Fecha = lector.GetDateTime(7),
             };

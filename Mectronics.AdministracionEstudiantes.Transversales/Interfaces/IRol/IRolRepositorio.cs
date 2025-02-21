@@ -13,12 +13,6 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IRol
     /// </summary>
     public interface IRolRepositorio
     {
-        /// <summary>
-        /// Consulta un rol específico en la base de datos según los criterios definidos en <see cref="RolFiltro"/>.
-        /// </summary>
-        /// <param name="objEntidad">Objeto de tipo <see cref="RolFiltro"/> con los criterios de búsqueda.</param>
-        /// <returns>Retorna un objeto de tipo <see cref="Rol"/> con la información del rol encontrado.</returns>
-        Rol Consultar(RolFiltro objEntidad);
 
         /// <summary>
         /// Consulta un listado de roles en la base de datos según los criterios definidos en <see cref="RolFiltro"/>.

@@ -1,14 +1,10 @@
-﻿using Mectronics.AdministracionEstudiantes.Transversales.Entidades;
-using System;
-using System.Collections.Generic;
+﻿using AutoMapper;
+using Mectronics.AdministracionEstudiantes.Transversales.Entidades;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Mectronics.AdministracionEstudiantes.Transversales
+namespace Mectronics.AdministracionEstudiantes.Transversales.Mapeos
 {
-    public static class InscripcionMateriaMapeo
+    public class InscripcionMateriaMapeo : Profile
     {
         public static InscripcionMateria Mapear(IDataReader lector)
         {
@@ -22,11 +18,12 @@ namespace Mectronics.AdministracionEstudiantes.Transversales
                 IdInscripcion = lector.GetInt32(0),
                 Usuario = new Usuario
                 {
-                    IdUsuario = lector.GetInt32(1),
+                    Nombres = lector.GetString(1) // ✅ Mapear el nombre en lugar del ID
                 },
                 Materia = new Materia
                 {
-                    IdMateria = lector.GetInt32(2),
+                    Nombre = lector.GetString(2) // ✅ Mapear el nombre de la materia en lugar del ID
+
                 }
             };
         }
@@ -38,30 +35,28 @@ namespace Mectronics.AdministracionEstudiantes.Transversales
         /// <returns>Una lista de objetos <see cref="InscripcionMateria"/> con los datos obtenidos.</returns>
         public static List<InscripcionMateria> MapearLista(IDataReader lector)
         {
-            var InscripcionMaterias = new List<InscripcionMateria>(); // Inicializa la lista donde se almacenarán los resultados
+            var inscripciones = new List<InscripcionMateria>();
 
-            // Verifica si el lector es nulo antes de proceder
             if (lector == null)
-                return InscripcionMaterias;
+                return inscripciones;
 
-            // Itera a través de las filas del lector y agrega cada InscripcionMateria a la lista
             while (lector.Read())
             {
-                InscripcionMaterias.Add(new InscripcionMateria
+                inscripciones.Add(new InscripcionMateria
                 {
                     IdInscripcion = lector.GetInt32(0),
                     Usuario = new Usuario
                     {
-                        IdUsuario = lector.GetInt32(1),
+                        Nombres = lector.IsDBNull(1) ? string.Empty : lector.GetString(1)
                     },
                     Materia = new Materia
                     {
-                        IdMateria = lector.GetInt32(2),
+                        Nombre = lector.IsDBNull(2) ? string.Empty : lector.GetString(2)
                     }
                 });
             }
 
-            return InscripcionMaterias; // Retorna la lista con los objetos mapeados
+            return inscripciones;
         }
     }
 }

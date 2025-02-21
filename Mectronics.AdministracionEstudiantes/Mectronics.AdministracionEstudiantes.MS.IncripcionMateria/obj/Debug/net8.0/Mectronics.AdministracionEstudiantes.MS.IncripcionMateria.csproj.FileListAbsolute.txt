@@ -1,0 +1,2 @@
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.MS.IncripcionMateria\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.MS.IncripcionMateria.csproj.AssemblyReference.cache
+E:\Repositorios\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes\Mectronics.AdministracionEstudiantes.MS.IncripcionMateria\obj\Debug\net8.0\Mectronics.AdministracionEstudiantes.MS.IncripcionMateria.GeneratedMSBuildEditorConfig.editorconfig

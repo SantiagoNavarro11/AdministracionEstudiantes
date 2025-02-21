@@ -33,18 +33,6 @@ namespace Mectronics.AdministracionEstudiantes.Servicio.Servicios
             _repositorioTienda = repositorioTienda;
             _mapeo = mapeo;
         }
-
-        public RolDto Consultar(RolFiltro rolFiltro)
-        {
-            if (rolFiltro == null)
-                throw new ArgumentNullException("El filtro no puede ser nulo.");
-
-            Rol rol = _repositorioTienda.Consultar(rolFiltro);
-            RolDto rolDto = _mapeo.Map<RolDto>(rol);
-
-            return rolDto;
-        }
-
         public List<RolDto> ConsultarLista(RolFiltro rolFiltro)
         {
             if (rolFiltro == null)

@@ -26,8 +26,8 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
         }
         public int Insertar(Usuario objEntidad)
         {
-            string strComandoSql = @"INSERT INTO Usuarios (Nombres, Apellidos, Edad, CorreoElectronico, Contrasena, IdRol, Fecha) 
-                     VALUES (@Nombres, @Apellidos, @Edad, @CorreoElectronico, @Contrasena,@IdRol,@Fecha) SELECT SCOPE_IDENTITY();";
+            string strComandoSql = @"INSERT INTO Usuarios (Nombres, Apellidos, Edad, CorreoElectronico, Contrasena, IdRoles, Fecha) 
+                     VALUES (@Nombres, @Apellidos, @Edad, @CorreoElectronico, @Contrasena, @IdRoles, @Fecha) SELECT SCOPE_IDENTITY();";
             int IdUsuario = 0;
 
             try
@@ -36,9 +36,9 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
                 _conexion.AgregarParametro("@Nombres", objEntidad.Nombres, SqlDbType.VarChar);
                 _conexion.AgregarParametro("@Apellidos", objEntidad.Apellidos, SqlDbType.VarChar);
                 _conexion.AgregarParametro("@Edad", objEntidad.Edad, SqlDbType.Int);
-                _conexion.AgregarParametro("@CorreoEle ctronico", objEntidad.CorreoElectronico, SqlDbType.VarChar);
+                _conexion.AgregarParametro("@CorreoElectronico", objEntidad.CorreoElectronico, SqlDbType.VarChar);
                 _conexion.AgregarParametro("@Contrasena", objEntidad.Contrasena, SqlDbType.VarChar);
-                _conexion.AgregarParametro("@IdRol", objEntidad.Roles.IdRol, SqlDbType.VarChar);
+                _conexion.AgregarParametro("@IdRoles", objEntidad.Roles.IdRol, SqlDbType.VarChar);
                 _conexion.AgregarParametro("@Fecha", objEntidad.Fecha, SqlDbType.Date);
                 _conexion.AbrirConexion();
                 object resultado = _conexion.EjecutarEscalarSql(strComandoSql);
@@ -112,14 +112,12 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
         {
             Usuario usuario = null;
             string consultaSql = "SELECT U.IdUsuario, U.Nombres, U.Apellidos, U.Edad, U.CorreoElectronico, U.Contrasena, R.NombreRol AS Rol, U.Fecha " +
-                "FROM Usuarios U INNER JOIN Roles R ON U.IdRoles = R.IdRol WHERE U.IdUsuario = @IdUsuario AND U.Apellidos = @Apellidos AND U.CorreoElectronico = @CorreoElectronico;";
+                "FROM Usuarios U INNER JOIN Roles R ON U.IdRoles = R.IdRol WHERE U.IdUsuario = @IdUsuario";
 
             try
             {
                 _conexion.LimpiarParametros();
                 _conexion.AgregarParametro("@IdUsuario", usuarioFiltro.IdUsuario, SqlDbType.Int);
-                _conexion.AgregarParametro("@Apellidos", usuarioFiltro.Apellidos, SqlDbType.VarChar);
-                _conexion.AgregarParametro("@CorreoElectronico", usuarioFiltro.CorreoElectronico, SqlDbType.VarChar);
 
                 //_conexion.AbrirConexion();
                 using (IDataReader resultado = _conexion.EjecutarConsulta(consultaSql))

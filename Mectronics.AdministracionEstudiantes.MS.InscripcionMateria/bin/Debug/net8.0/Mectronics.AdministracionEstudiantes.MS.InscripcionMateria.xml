@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Mectronics.AdministracionEstudiantes.MS.InscripcionMateria</name>
+    </assembly>
+    <members>
+        <member name="T:Mectronics.AdministracionEstudiantes.MS.InscripcionMateria.Controllers.InscripcionMateriaController">
+            <summary>
+            Controlador para la gestión de inscripciones en materias.
+            </summary>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.InscripcionMateria.Controllers.InscripcionMateriaController.#ctor(Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IInscripcionMaterias.IInscripcionMateriaServicio)">
+            <summary>
+            Constructor del controlador que inyecta el servicio de inscripciones.
+            </summary>
+            <param name="inscripcionMateriasServicio">Servicio de inscripciones.</param>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.InscripcionMateria.Controllers.InscripcionMateriaController.Insertar(Mectronics.AdministracionEstudiantes.Transversales.Dtos.InscripcionMateriaDto)">
+            <summary>
+            Inserta una nueva inscripción de materia.
+            </summary>
+            <param name="inscripcionMateriaDto">Datos de la inscripción.</param>
+            <returns>Respuesta con la inscripción creada.</returns>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.InscripcionMateria.Controllers.InscripcionMateriaController.Actualizar(Mectronics.AdministracionEstudiantes.Transversales.Dtos.InscripcionMateriaDto)">
+            <summary>
+            Actualiza una inscripción de materia existente.
+            </summary>
+            <param name="inscripcionMateriaDto">Datos actualizados de la inscripción.</param>
+            <returns>Respuesta con el resultado de la actualización.</returns>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.InscripcionMateria.Controllers.InscripcionMateriaController.Eliminar(System.Int32)">
+            <summary>
+            Elimina una inscripción de materia por ID.
+            </summary>
+            <param name="id">ID de la inscripción.</param>
+            <returns>Respuesta con el resultado de la eliminación.</returns>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.InscripcionMateria.Controllers.InscripcionMateriaController.Consultar(System.Int32)">
+            <summary>
+            Consulta una inscripción de materia por ID.
+            </summary>
+            <param name="id">ID de la inscripción.</param>
+            <returns>Inscripción encontrada.</returns>
+        </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.InscripcionMateria.Controllers.InscripcionMateriaController.ConsultarLista(Mectronics.AdministracionEstudiantes.Transversales.Filtros.InscripcionMateriaFiltro)">
+            <summary>
+            Consulta una lista de inscripciones de materias basadas en filtros.
+            </summary>
+            <param name="filtro">Criterios de búsqueda.</param>
+            <returns>Lista de inscripciones encontradas.</returns>
+        </member>
+    </members>
+</doc>

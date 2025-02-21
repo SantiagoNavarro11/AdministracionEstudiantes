@@ -29,31 +29,5 @@
         "StatusCode": 200
       }
     ]
-  },
-  {
-    "ContainingType": "Mectronics.AdministracionEstudiantes.MS.Rol.Controllers.RolController",
-    "Method": "Consultar",
-    "RelativePath": "api/Rol/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Mectronics.AdministracionEstudiantes.Transversales.Dtos.RolDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
   }
 ]

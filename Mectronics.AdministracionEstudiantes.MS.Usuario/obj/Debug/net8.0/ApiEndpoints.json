@@ -116,13 +116,13 @@
   {
     "ContainingType": "Mectronics.AdministracionEstudiantes.MS.Usuario.Controllers.UsuarioController",
     "Method": "Consultar",
-    "RelativePath": "api/usuarios/{Id}",
+    "RelativePath": "api/usuarios/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Id",
+        "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
       }

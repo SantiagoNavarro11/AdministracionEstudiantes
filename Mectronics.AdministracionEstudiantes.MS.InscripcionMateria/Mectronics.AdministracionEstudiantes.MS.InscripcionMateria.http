@@ -1,0 +1,6 @@
+@Mectronics.AdministracionEstudiantes.MS.InscripcionMateria_HostAddress = http://localhost:5089
+
+GET {{Mectronics.AdministracionEstudiantes.MS.InscripcionMateria_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
