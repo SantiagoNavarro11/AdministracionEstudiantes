@@ -89,7 +89,11 @@ namespace Mectronics.AdministracionEstudiantes.Servicio.Servicios
         {
             Usuario usuario = _mapeo.Map<Usuario>(usuarioDto);
 
-            // ValidarDatos(usuario);
+            //List<Usuario> usuarios = _repositorioUsuario.ConsultarListado(new UsuarioFiltro() { IdUsuario = usuarioDto.IdUsuarioEstudiante });
+
+            //if (usuarios.Count > 3 )
+
+            //throw new ArgumentException("El estudiante no puede tener inscribir mas de tres materias.");
 
             usuarioDto.IdUsuario = _repositorioUsuario.Insertar(usuario);
 

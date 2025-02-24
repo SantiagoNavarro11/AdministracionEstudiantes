@@ -187,6 +187,9 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
                 consultaSql += " AND R.IdRol = @IdRol";
             }
 
+            if (filtro.IdEstudiante > 0)
+                consultaSql += " AND m.IdUsuarioProfesor = @IdUsuarioProfesor";
+
             try
             {
                 _conexion.LimpiarParametros();

@@ -7,9 +7,10 @@
 
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     height: 100vh;
+    padding: 20px;
 }
 
 .container {
@@ -17,7 +18,9 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    width: 300px;
+    width: 90%;
+    max-width: 600px;
+    margin-bottom: 20px;
 }
 
 h2 {
@@ -53,4 +56,34 @@ button {
 
 button:hover {
     background: #00c6ff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #005f99;
+    color: white;
+}
+
+td button {
+    background: #ff9800;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+td button:hover {
+    background: #e68900;
 }

@@ -78,6 +78,11 @@
         "Name": "IdRol",
         "Type": "System.Int32",
         "IsRequired": false
+      },
+      {
+        "Name": "IdEstudiante",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [

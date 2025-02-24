@@ -82,9 +82,6 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio
                 Comando.CommandType = CommandType.Text;
                 Comando.CommandText = consultaSql;
 
-                if (usarTransaccion)
-                    Comando.Transaction = Transaccion;
-
                 return Comando.ExecuteReader();
             }
 

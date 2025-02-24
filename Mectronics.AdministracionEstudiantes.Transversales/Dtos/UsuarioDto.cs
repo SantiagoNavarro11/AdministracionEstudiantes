@@ -48,6 +48,7 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Dtos
         /// </summary>
         public DateTime Fecha { get; set; }
 
+
         public UsuarioDto()
         {
             IdUsuario = 0;

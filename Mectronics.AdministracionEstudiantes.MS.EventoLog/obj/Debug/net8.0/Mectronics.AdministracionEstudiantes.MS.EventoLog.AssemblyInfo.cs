@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mectronics.AdministracionEstudiantes.MS.EventoLog")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2d4f999deae9cc43c842bde582ff8a424a731563")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aa68dc078e6b65a8585579dd87f0db69f423ba76")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mectronics.AdministracionEstudiantes.MS.EventoLog")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mectronics.AdministracionEstudiantes.MS.EventoLog")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

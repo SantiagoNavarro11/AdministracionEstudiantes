@@ -1,24 +1,45 @@
 document.getElementById("loginForm").addEventListener("submit", async function (event) {
     event.preventDefault();
 
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+    // Obtener los datos de los controles (input) HTML.
+    const correo = document.getElementById("correo").value;
+    const contrasena = document.getElementById("contrasena").value;
 
-    const response = await fetch("http://localhost:5000/api/auth/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
+    // Mandar a encriptar la contraseña.
+    encriptarSHA256(contrasena).then(contrasenaEncriptada => {
+
+        // Cuando la contraseña ya esta encriptada, entonces.
+
+        // 1. Armar objeto que se envia al API.
+        let autenticacion = { correo, contrasena: contrasenaEncriptada };
+
+        // 2. Consimor API.
+        fetch("https://localhost:7225/api/usuarios/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(autenticacion)
+        })
+            .then(response => response.json())
+            .then(resultado => {
+
+                console.log("Respuesta de la API:", resultado);
+
+                if (resultado.exito == true) {                    
+                    alertaConfirmacion(resultado.mensaje);
+                    localStorage.clear();
+                    localStorage.setItem("usuarioactual", JSON.stringify(resultado.datos));
+                    document.getElementById("loginForm").reset();
+                    window.location.href = "principal.html";
+                }
+                else {
+                    alertaAdvertencia(resultado.mensaje);
+                }
+            })
+            .catch(error => {
+                alertaError(error);
+                console.error("Error al registrar usuario:", error)
+            });
     });
-
-    const data = await response.json();
-
-    if (response.ok) {
-        alert("Inicio de sesión exitoso");
-        localStorage.setItem("token", data.token);
-        window.location.href = "inscripcion.html";
-    } else {
-        alert("Error: " + data.message);
-    }
 });

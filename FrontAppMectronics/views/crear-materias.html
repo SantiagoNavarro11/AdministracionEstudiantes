@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Virtual - Registro de Materias</title>
+    <!--link rel="stylesheet" href="../styles/Crear_Materias.css"-->
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="b-example-divider"></div>
+
+    <header class="p-3 mb-3 border-bottom">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+                    <img src="../imagenes/logo.png">
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li id="liGestionUsuarios" class="ocultarOpcionMenu"><a href="admin-usuarios.html"
+                            class="nav-link px-2 link-body-emphasis">Gestión Estudiantes/Profesores</a></li>
+                    <li id="liGestionMaterias" class="ocultarOpcionMenu"><a href="crear-materias.html"
+                            class="nav-link px-2 link-body-emphasis">Gestión Materia</a></li>
+                    <li id="liGestionarMisMaterias" class="ocultarOpcionMenu"><a href="inscripcion-materias.html"
+                            class="nav-link px-2 link-body-emphasis">Gestionar Mis Materias</a></li>
+                </ul>
+
+                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="../imagenes/user.png" alt="usuario" width="50" height="50" class="rounded-circle">
+                        <label id="lblNombreUsuario"></label>
+                    </a>
+                    <ul class="dropdown-menu text-small">
+                        <li><a class="dropdown-item" onclick="CerrarSesion()">Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <div class="container">
+        <!-- Botón para abrir modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRegistroMateria"
+            onclick="nuevo()">
+            Nuevo
+        </button>
+    
+        <div class="table-responsive small">
+            <h2>Materias Registradas</h2>
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Número de Créditos</th>
+                        <th scope="col">Profesor</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaMaterias"></tbody>
+            </table>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="modalRegistroMateria" tabindex="-1" aria-labelledby="modalRegistroMateriaTitulo"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalRegistroMateriaTitulo">Guardar Materia</h1> <!-- ID corregido -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registroForm">
+                        <input type="hidden" id="idMateria">
+    
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="nombre" required>
+                            <label for="nombre" class="form-label">Materia</label> <!-- Comillas corregidas -->
+                        </div>
+    
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="numeroCreditos" required>
+                            <label for="numeroCreditos" class="form-label">Número de Créditos</label>
+                        </div>
+    
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="idUsuarioProfesor" required>
+                            <label for="idUsuarioProfesor" class="form-label">Profesor</label>
+                        </div>
+    
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cerrarModal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="../scripts/CrearMaterias.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/noumanqamar450/alertbox@main/version/1.0.2/alertbox.min.js"></script>
+    <script src="../scripts/constantes.js"></script>
+    <script src="../scripts/alertas.js"></script>
+    <script src="../scripts/sesion.js"></script>
+    <script src="../scripts/seguridad.js"></script>
+</body>
+
+</html>

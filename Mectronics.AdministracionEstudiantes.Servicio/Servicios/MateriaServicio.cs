@@ -16,7 +16,6 @@ namespace Mectronics.AdministracionEstudiantes.Servicio
             _repositorioMateria = repositorioMateria;
             _mapeo = mapeo;
         }
-
         public MateriaDto Insertar(MateriaDto materiaDto)
         {
             Materia materia = _mapeo.Map<Materia>(materiaDto);
