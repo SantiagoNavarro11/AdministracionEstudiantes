@@ -141,7 +141,7 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
             {
                 _conexion.LimpiarParametros();
                 _conexion.AgregarParametro("@IdMateria", objMateria.IdMateria, SqlDbType.Int);
-                
+
                 using (IDataReader resultado = _conexion.EjecutarConsulta(consultaSql))
                 {
                     materia = MateriaMapeo.Mapear(resultado);
@@ -165,7 +165,7 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
         public List<Materia> ConsultarListado(MateriaFiltro objMateria)
         {
             List<Materia> materias = new List<Materia>();
-            string consultaSql = @" SELECT m.IdMateria, m.NombreMateria, m.NumeroCreditosMateria, m.IdUsuarioProfesor FROM Materias m INNER JOIN Usuarios u ON m.IdUsuarioProfesor = u.IdUsuario WHERE 1 = 1";
+            string consultaSql = @"SELECT m.IdMateria, m.NombreMateria, m.NumeroCreditosMateria, m.IdUsuarioProfesor, u.Nombres + ' ' + u.Apellidos AS NombreProfesor FROM Materias m INNER JOIN Usuarios u ON m.IdUsuarioProfesor = u.IdUsuario WHERE 1 = 1";
 
             if (objMateria.IdMateria > 0)
             {
@@ -173,7 +173,9 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
             }
 
             if (objMateria.IdProfesor > 0)
+            {
                 consultaSql += " AND m.IdUsuarioProfesor = @IdUsuarioProfesor";
+            }
 
             if (!string.IsNullOrWhiteSpace(objMateria.Nombre))
             {

@@ -24,7 +24,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
             .then(response => response.json())
             .then(resultado => {
 
-                console.log("Respuesta de la API:", resultado);
+                debugger;
 
                 if (resultado.exito == true) {                    
                     alertaConfirmacion(resultado.mensaje);

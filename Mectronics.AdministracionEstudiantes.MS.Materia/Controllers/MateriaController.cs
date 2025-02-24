@@ -161,7 +161,7 @@ namespace Mectronics.AdministracionEstudiantes.MS.Materia.Controllers
         /// <param name="filtro">Objeto <see cref="MateriaFiltro"/> con los criterios de búsqueda.</param>
         /// <returns>Lista de materias encontradas.</returns>
         [HttpGet]
-        public ActionResult<List<MateriaDto>> ConsultarLista([FromQuery] MateriaFiltro ?filtro)
+        public ActionResult<List<MateriaDto>> ConsultarLista([FromQuery] MateriaFiltro? filtro)
         {
             try
             {
@@ -169,10 +169,10 @@ namespace Mectronics.AdministracionEstudiantes.MS.Materia.Controllers
 
                 if (materiasDto == null || materiasDto.Count == 0)
                 {
-                    return NotFound(new RespuestaDto
+                    return Ok(new RespuestaDto
                     {
-                        Exito = false,
-                        Mensaje = "No se encontró información.",
+                        Exito = true,
+                        Mensaje = "No hay materias creadas.",
                         Datos = null
                     });
                 }

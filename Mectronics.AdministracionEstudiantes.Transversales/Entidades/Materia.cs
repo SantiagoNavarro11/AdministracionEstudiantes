@@ -30,6 +30,11 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Entidades
         public int IdUsuarioProfesor { get; set; }
 
         /// <summary>
+        /// Nombre del profesor encargado de la materia.
+        /// </summary>
+        public string NombreProfesor { get; set; }
+
+        /// <summary>
         /// Constructor de la clase <see cref="Materia"/>.
         /// Inicializa una nueva instancia con valores predeterminados.
         /// </summary>

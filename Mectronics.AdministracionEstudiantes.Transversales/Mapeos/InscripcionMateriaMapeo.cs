@@ -18,11 +18,11 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Mapeos
                 IdInscripcion = lector.GetInt32(0),
                 Usuario = new Usuario
                 {
-                    Nombres = lector.GetString(1) // ✅ Mapear el nombre en lugar del ID
+                    Nombres = lector.GetString(1)
                 },
                 Materia = new Materia
                 {
-                    Nombre = lector.GetString(2) // ✅ Mapear el nombre de la materia en lugar del ID
+                    Nombre = lector.GetString(2)
 
                 }
             };
@@ -47,11 +47,17 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Mapeos
                     IdInscripcion = lector.GetInt32(0),
                     Usuario = new Usuario
                     {
-                        Nombres = lector.IsDBNull(1) ? string.Empty : lector.GetString(1)
+                        IdUsuario = lector.GetInt32(1),
+                        Nombres = lector.GetString(2),
+                        Apellidos = lector.GetString(3)
                     },
                     Materia = new Materia
                     {
-                        Nombre = lector.IsDBNull(2) ? string.Empty : lector.GetString(2)
+                        IdMateria = lector.GetInt32(4),
+                        Nombre = lector.GetString(5),
+                        IdUsuarioProfesor = lector.GetInt32(6),
+                        NombreProfesor = lector.GetString(7),
+                        NumeroCreditos = lector.GetInt32(8)
                     }
                 });
             }

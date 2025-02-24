@@ -13,6 +13,11 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio
     public class ConexionBaseDatos : IConexionBaseDatos
     {
         /// <summary>
+        /// Cadena de conexion.
+        /// </summary>
+        private string _cadenaConexion { get; set; }
+
+        /// <summary>
         /// Representa el comando SQL asociado a la conexión.
         /// </summary>
         public SqlCommand Comando { get; set; }
@@ -39,11 +44,11 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio
             if (configuration == null)
                 throw new Exception("No existe un archivo de configuración.");
 
-            string cadenaConexion = configuration.GetConnectionString("AdministracionEstudiantes");
+            _cadenaConexion = configuration.GetConnectionString("AdministracionEstudiantes");
 
-            Conexion = new SqlConnection(cadenaConexion);
-            Comando = Conexion.CreateCommand();
-            Comando.Connection = Conexion;
+            Conexion = new SqlConnection(_cadenaConexion);
+            //Comando = Conexion.CreateCommand();
+            //Comando.Connection = Conexion;
         }
 
         /// <summary>
@@ -53,6 +58,10 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio
         {
             if (Conexion.State != ConnectionState.Open)
             {
+                Conexion = new SqlConnection(_cadenaConexion);
+                Comando = Conexion.CreateCommand();
+                Comando.Connection = Conexion;
+
                 Conexion.Open();
             }
         }
@@ -65,6 +74,8 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio
             if (Conexion != null && Conexion.State == ConnectionState.Open)
             {
                 Conexion.Close();
+                Conexion.Dispose();
+                Comando?.Dispose();
             }
         }
         /// <summary>
@@ -132,6 +143,8 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio
         /// </summary>
         public void LimpiarParametros()
         {
+            AbrirConexion();
+
             Comando?.Parameters.Clear();
         }
 

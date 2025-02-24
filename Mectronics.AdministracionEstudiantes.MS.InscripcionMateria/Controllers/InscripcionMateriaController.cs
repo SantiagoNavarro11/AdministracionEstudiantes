@@ -169,7 +169,7 @@ namespace Mectronics.AdministracionEstudiantes.MS.InscripcionMateria.Controllers
 
                 if (inscripcionesDto == null || inscripcionesDto.Count == 0)
                 {
-                    return NotFound(new RespuestaDto
+                    return Ok(new RespuestaDto
                     {
                         Exito = false,
                         Mensaje = "No se encontró información.",

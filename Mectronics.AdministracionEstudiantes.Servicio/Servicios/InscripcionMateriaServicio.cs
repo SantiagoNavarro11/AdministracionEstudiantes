@@ -3,6 +3,7 @@ using Mectronics.AdministracionEstudiantes.Transversales.Dtos;
 using Mectronics.AdministracionEstudiantes.Transversales.Entidades;
 using Mectronics.AdministracionEstudiantes.Transversales.Filtros;
 using Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IInscripcionMaterias;
+using Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IMateria;
 using System;
 using System.Collections.Generic;
 
@@ -14,6 +15,7 @@ namespace Mectronics.AdministracionEstudiantes.Servicio.Servicios
     public class InscripcionMateriaServicio : IInscripcionMateriaServicio
     {
         private readonly IInscripcionMateriaRepositorio _repositorioInscripcionMateria;
+        private readonly IMateriaRepositorio _repositorioMateria;
         private readonly IMapper _mapeo;
 
         /// <summary>
@@ -21,9 +23,10 @@ namespace Mectronics.AdministracionEstudiantes.Servicio.Servicios
         /// </summary>
         /// <param name="repositorioInscripcionMateria">Repositorio de inscripciones.</param>
         /// <param name="mapeo">Instancia de AutoMapper.</param>
-        public InscripcionMateriaServicio(IInscripcionMateriaRepositorio repositorioInscripcionMateria, IMapper mapeo)
+        public InscripcionMateriaServicio(IInscripcionMateriaRepositorio repositorioInscripcionMateria, IMateriaRepositorio repositorioMateria, IMapper mapeo)
         {
             _repositorioInscripcionMateria = repositorioInscripcionMateria;
+            _repositorioMateria = repositorioMateria;
             _mapeo = mapeo;
         }
 
@@ -80,6 +83,17 @@ namespace Mectronics.AdministracionEstudiantes.Servicio.Servicios
             InscripcionMateria inscripcionMateria = _mapeo.Map<InscripcionMateria>(objEntidadDto);
 
             ValidarDatos(inscripcionMateria);
+
+            Materia materia = _repositorioMateria.Consultar(new MateriaFiltro() { IdMateria = objEntidadDto.Materia.IdMateria });
+
+            // Se valida que un el estudiante no pueda tener clase con un mismo profesor en mas de una materia.
+            List<InscripcionMateria> inscripciones = _repositorioInscripcionMateria.ConsultarListado(new InscripcionMateriaFiltro() { IdUsuario = objEntidadDto.Usuario.IdUsuario });
+
+            if (inscripciones.Count(x => x.Materia.IdUsuarioProfesor == materia.IdUsuarioProfesor) >= 1)
+                throw new ArgumentException("No puede inscribir mas de una materia con el mismo profesor.");
+
+            if (inscripciones.Count >= 3)
+                throw new ArgumentException("No puede inscribir mas de tres materias.");
 
             objEntidadDto.IdInscripcion = _repositorioInscripcionMateria.Insertar(inscripcionMateria);
 

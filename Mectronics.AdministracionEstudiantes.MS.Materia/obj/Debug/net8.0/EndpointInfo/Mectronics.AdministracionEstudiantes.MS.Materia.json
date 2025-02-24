@@ -282,6 +282,10 @@
           "idUsuarioProfesor": {
             "type": "integer",
             "format": "int32"
+          },
+          "nombreProfesor": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

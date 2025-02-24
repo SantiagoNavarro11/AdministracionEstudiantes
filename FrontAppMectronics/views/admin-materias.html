@@ -26,7 +26,7 @@
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li id="liGestionUsuarios" class="ocultarOpcionMenu"><a href="admin-usuarios.html"
                             class="nav-link px-2 link-body-emphasis">Gestión Estudiantes/Profesores</a></li>
-                    <li id="liGestionMaterias" class="ocultarOpcionMenu"><a href="crear-materias.html"
+                    <li id="liGestionMaterias" class="ocultarOpcionMenu"><a href="admin-materias.html"
                             class="nav-link px-2 link-body-emphasis">Gestión Materia</a></li>
                     <li id="liGestionarMisMaterias" class="ocultarOpcionMenu"><a href="inscripcion-materias.html"
                             class="nav-link px-2 link-body-emphasis">Gestionar Mis Materias</a></li>
@@ -80,7 +80,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="registroForm">
+                    <form id="formMateria">
                         <input type="hidden" id="idMateria">
     
                         <div class="form-floating mb-3">
@@ -89,13 +89,14 @@
                         </div>
     
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="numeroCreditos" required>
+                            <input type="text" class="form-control" id="numeroCreditos" value="3" required readonly>
                             <label for="numeroCreditos" class="form-label">Número de Créditos</label>
                         </div>
     
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="idUsuarioProfesor" required>
+                        <div class="mb-3">
                             <label for="idUsuarioProfesor" class="form-label">Profesor</label>
+                            <select class="form-select" id="idUsuarioProfesor" required>
+                            </select>
                         </div>
     
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cerrarModal">Cerrar</button>
@@ -112,7 +113,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <script src="../scripts/CrearMaterias.js"></script>
+    <script src="../scripts/admin-materias.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/noumanqamar450/alertbox@main/version/1.0.2/alertbox.min.js"></script>
     <script src="../scripts/constantes.js"></script>
     <script src="../scripts/alertas.js"></script>

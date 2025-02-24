@@ -1,11 +1,11 @@
 using Mectronics.AdministracionEstudiantes.Repositorio;
 using Mectronics.AdministracionEstudiantes.Repositorio.Repositorios;
-using Mectronics.AdministracionEstudiantes.Transversales.Entidades;
+using Mectronics.AdministracionEstudiantes.Servicio.Servicios;
 using Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IInscripcionMaterias;
+using Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IMateria;
 using Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IRepositorio;
 using Mectronics.AdministracionEstudiantes.Transversales.Mapeos;
 using Microsoft.OpenApi.Models;
-using Mectronics.AdministracionEstudiantes.Servicio.Servicios;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,19 +34,20 @@ builder.Services.AddAutoMapper(typeof(AutoMapeador));
 builder.Services.AddScoped<IConexionBaseDatos, ConexionBaseDatos>();
 builder.Services.AddScoped<IInscripcionMateriaServicio, InscripcionMateriaServicio>();
 builder.Services.AddScoped<IInscripcionMateriaRepositorio, InscripcionMateriaRepositorio>();
+builder.Services.AddScoped<IMateriaRepositorio, MateriaRepositorio>();
 
 // Agregar controladores
 builder.Services.AddControllers();
 
-// Configurar Swagger para la documentación de la API
+// Configurar Swagger para la documentaci n de la API
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "API de Inscripción Materias",
+        Title = "API de Inscripci n Materias",
         Version = "v1",
-        Description = "API de Inscripción Materias",
+        Description = "API de Inscripci n Materias",
         Contact = new OpenApiContact
         {
             Name = "Soporte API",
@@ -54,7 +55,7 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 
-    // Obtener la ruta del archivo XML de documentación
+    // Obtener la ruta del archivo XML de documentaci n
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
 

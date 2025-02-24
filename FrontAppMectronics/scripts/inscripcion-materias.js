@@ -1,23 +1,30 @@
 document.addEventListener("DOMContentLoaded", function () {
     cargarMenu();
-    cargarUsuarios();
+    cargarEstudiantes();
     cargarMaterias();
+
+    if (IdRol() == ROL_ADMINISTRADOR) {
+        cargarMateriasInscritas('');
+    }
 
     document.getElementById("inscripcionForm").addEventListener("submit", function (event) {
         event.preventDefault();
         inscribirMateria();
     });
+
+    /*document.getElementById("miSelect").addEventListener("change", function () {
+        let valorSeleccionado = this.value;
+        document.getElementById("resultado").textContent = valorSeleccionado;
+    });*/
 });
 
-function cargarUsuarios() {
-    fetch("https://localhost:7225/api/usuarios")
+function cargarEstudiantes() {
+    fetch(URL_API_USUARIOS + "usuarios?IdRol=" + ROL_ESTUDIANTE)
         .then(response => response.json())
         .then(data => {
-            console.log("Usuarios recibidos:", data);
-
             let usuariosArray = Array.isArray(data) ? data : data.datos;
+
             if (!usuariosArray || !Array.isArray(usuariosArray)) {
-                console.error("No se recibió un array de usuarios.");
                 return;
             }
 
@@ -30,18 +37,18 @@ function cargarUsuarios() {
             defaultOption.disabled = true;
             selectUsuarios.appendChild(defaultOption);
 
-            // Recuperar usuario logueado desde localStorage
-            let usuarioActual = JSON.parse(localStorage.getItem("usuarioactual"));
-            let usuarioLogueadoId = usuarioActual ? usuarioActual.idUsuario : null;
+            // Recuperar usuario logueado desde localStorage            
+            let usuarioLogueadoId = IdUsuario();
 
             usuariosArray.forEach(usuario => {
                 let option = document.createElement("option");
                 option.value = usuario.idUsuario;
                 option.textContent = `${usuario.nombres} ${usuario.apellidos}`;
-                
-                // Si el usuario logueado coincide, seleccionarlo automáticamente
-                if (usuario.idUsuario === usuarioLogueadoId) {
+
+                // Si el usuario logueado coincide, seleccionarlo automáticamente, solo si el rol no es administrador.
+                if (usuario.idUsuario === usuarioLogueadoId && IdRol() != ROL_ADMINISTRADOR) {
                     option.selected = true;
+                    cargarMateriasInscritas(usuario.idUsuario);
                 }
 
                 selectUsuarios.appendChild(option);
@@ -52,14 +59,12 @@ function cargarUsuarios() {
 
 
 function cargarMaterias() {
-    fetch("https://localhost:44335/api/Materia")
+    fetch(URL_API_MATERIAS + "materia")
         .then(response => response.json())
         .then(data => {
-            console.log("Materias recibidas:", data);
 
             let materiasArray = Array.isArray(data) ? data : data.datos;
             if (!materiasArray || !Array.isArray(materiasArray)) {
-                console.error("No se recibió un array de materias.");
                 return;
             }
 
@@ -90,7 +95,7 @@ function inscribirMateria() {
 
     // Verifica que ambos valores no estén vacíos
     if (!idUsuario || !idMateria) {
-        alert("Por favor, selecciona una materia.");
+        alertaAdvertencia("Por favor, seleccione un usuario y una materia.");
         return;
     }
 
@@ -100,23 +105,22 @@ function inscribirMateria() {
         },
         materia: {
             idMateria: parseInt(idMateria)
-        }  
+        }
     };
 
     console.log("Datos a enviar:", inscripcion);
 
-    fetch("https://localhost:44357/api/inscripcionMaterias", {
+    fetch(URL_API_INSCRIBIR_MATERIAS + "inscripcionMaterias", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(inscripcion)
     })
-    .then(response => response.json())
-        .then(resultado => {
+        .then(response => response.json())
+        .then(resultado => {         
             if (resultado.exito) {
-
-                cargarMaterias()
+                cargarMateriasInscritas('');
                 alertaConfirmacion(resultado.mensaje);
                 document.getElementById("inscripcionForm").reset();
             }
@@ -127,4 +131,45 @@ function inscribirMateria() {
         .catch(error => {
             alertaError(error);
         });
-    }
+}
+
+function cargarMateriasInscritas(idUsuario) {
+    var url = URL_API_INSCRIBIR_MATERIAS + `inscripcionMaterias/?IdUsuario=${idUsuario}`;
+
+    if (idUsuario == '')
+        url = URL_API_INSCRIBIR_MATERIAS + `inscripcionMaterias`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(resultado => {
+            let materiasArray = Array.isArray(resultado) ? resultado : resultado.datos;
+
+            if (!materiasArray || !Array.isArray(materiasArray)) {
+                return;
+            }
+
+            const tablaMaterias = document.getElementById("tablaMateriasHabilitadas")
+            tablaMaterias.innerHTML = "";
+
+            materiasArray.forEach(registro => {
+                let fila = document.createElement("tr");
+
+                fila.innerHTML = `
+                    <td>${registro.usuario.nombres} ${registro.usuario.apellidos}</td>
+                    <td>${registro.materia.nombre}</td>
+                    <td>${registro.materia.numeroCreditos}</td>
+                    <td>${registro.materia.nombreProfesor}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" onclick="cargarMateriaParaEditar(${registro.materia.idMateria})" data-bs-toggle="modal" data-bs-target="#modalRegistroMateria">
+                            Editar
+                        </button>
+                    </td>
+                `;
+
+                tablaMaterias.appendChild(fila);
+            });
+        })
+        .catch(error => {
+            alertaError(error);
+        });
+}

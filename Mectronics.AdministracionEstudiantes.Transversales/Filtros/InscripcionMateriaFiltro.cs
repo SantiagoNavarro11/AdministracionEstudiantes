@@ -17,12 +17,30 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Filtros
         public int IdInscripcion { get; set; }
 
         /// <summary>
+        /// Identificador único del profesor.
+        /// </summary>
+        public int IdProfesor { get; set; }
+
+        /// <summary>
+        /// Identificador único del usuario.
+        /// </summary>
+        public int IdUsuario { get; set; }
+
+        /// <summary>
+        /// Identificador único de la materia.
+        /// </summary>
+        public int IdMateria { get; set; }
+
+        /// <summary>
         /// Constructor de la clase <see cref="InscripcionMateriaFiltro"/>.
         /// Inicializa una nueva instancia con valores predeterminados.
         /// </summary>
         public InscripcionMateriaFiltro()
         {
             IdInscripcion = 0;
+            IdMateria = 0;
+            IdUsuario = 0;
+            IdProfesor = 0;
         }
     }
 }

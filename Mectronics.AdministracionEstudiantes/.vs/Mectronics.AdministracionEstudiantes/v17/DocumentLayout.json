@@ -3,22 +3,16 @@
   "WorkspaceRootPath": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9C0C40B7-71BA-4A80-999A-DD2C69C1FFC2}|..\\Mectronics.AdministracionEstudiantes.Repositorio\\Mectronics.AdministracionEstudiantes.Repositorio.csproj|e:\\repositorios\\mectronics.administracionestudiantes\\mectronics.administracionestudiantes.repositorio\\repositorios\\usuariorepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9C0C40B7-71BA-4A80-999A-DD2C69C1FFC2}|..\\Mectronics.AdministracionEstudiantes.Repositorio\\Mectronics.AdministracionEstudiantes.Repositorio.csproj|e:\\repositorios\\mectronics.administracionestudiantes\\mectronics.administracionestudiantes.repositorio\\repositorios\\inscripcionmateriarepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D5C28C1E-C140-4199-91EE-147EB4507C39}|..\\Mectronics.AdministracionEstudiantes.MS.Usuario\\Mectronics.AdministracionEstudiantes.MS.Usuario.csproj|e:\\repositorios\\mectronics.administracionestudiantes\\mectronics.administracionestudiantes.ms.usuario\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D7C6A7F1-3411-403C-A13C-742DF0EF2DFA}|..\\Mectronics.AdministracionEstudiantes.MS.InscripcionMateria\\Mectronics.AdministracionEstudiantes.MS.InscripcionMateria.csproj|e:\\repositorios\\mectronics.administracionestudiantes\\mectronics.administracionestudiantes.ms.inscripcionmateria\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9C0C40B7-71BA-4A80-999A-DD2C69C1FFC2}|..\\Mectronics.AdministracionEstudiantes.Repositorio\\Mectronics.AdministracionEstudiantes.Repositorio.csproj|e:\\repositorios\\mectronics.administracionestudiantes\\mectronics.administracionestudiantes.repositorio\\conexionbasedatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D7C6A7F1-3411-403C-A13C-742DF0EF2DFA}|..\\Mectronics.AdministracionEstudiantes.MS.InscripcionMateria\\Mectronics.AdministracionEstudiantes.MS.InscripcionMateria.csproj|e:\\repositorios\\mectronics.administracionestudiantes\\mectronics.administracionestudiantes.ms.inscripcionmateria\\controllers\\inscripcionmateriacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D5C28C1E-C140-4199-91EE-147EB4507C39}|..\\Mectronics.AdministracionEstudiantes.MS.Usuario\\Mectronics.AdministracionEstudiantes.MS.Usuario.csproj|e:\\repositorios\\mectronics.administracionestudiantes\\mectronics.administracionestudiantes.ms.usuario\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5EA4D94A-5333-4122-8F30-40631CD26BCE}|..\\Mectronics.AdministracionEstudiantes.Servicio\\Mectronics.AdministracionEstudiantes.Servicio.csproj|e:\\repositorios\\mectronics.administracionestudiantes\\mectronics.administracionestudiantes.servicio\\servicios\\usuarioservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9C0C40B7-71BA-4A80-999A-DD2C69C1FFC2}|..\\Mectronics.AdministracionEstudiantes.Repositorio\\Mectronics.AdministracionEstudiantes.Repositorio.csproj|e:\\repositorios\\mectronics.administracionestudiantes\\mectronics.administracionestudiantes.repositorio\\repositorios\\materiarepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{120F075C-95BD-4B50-9321-F25F5B1C93E8}|..\\Mectronics.AdministracionEstudiantes.MS.Materia\\Mectronics.AdministracionEstudiantes.MS.Materia.csproj|e:\\repositorios\\mectronics.administracionestudiantes\\mectronics.administracionestudiantes.ms.materia\\controllers\\materiacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -28,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -44,76 +38,55 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UsuarioRepositorio.cs",
-              "DocumentMoniker": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Repositorio\\Repositorios\\UsuarioRepositorio.cs",
-              "RelativeDocumentMoniker": "..\\Mectronics.AdministracionEstudiantes.Repositorio\\Repositorios\\UsuarioRepositorio.cs",
-              "ToolTip": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Repositorio\\Repositorios\\UsuarioRepositorio.cs",
-              "RelativeToolTip": "..\\Mectronics.AdministracionEstudiantes.Repositorio\\Repositorios\\UsuarioRepositorio.cs",
-              "ViewState": "AgIAALMAAAAAAAAAAAAYwKoAAAAMAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.MS.InscripcionMateria\\Program.cs",
+              "RelativeDocumentMoniker": "..\\Mectronics.AdministracionEstudiantes.MS.InscripcionMateria\\Program.cs",
+              "ToolTip": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.MS.InscripcionMateria\\Program.cs",
+              "RelativeToolTip": "..\\Mectronics.AdministracionEstudiantes.MS.InscripcionMateria\\Program.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-24T16:14:36.956Z",
+              "WhenOpened": "2025-02-24T21:05:44.04Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MateriaController.cs",
+              "DocumentMoniker": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.MS.Materia\\Controllers\\MateriaController.cs",
+              "RelativeDocumentMoniker": "..\\Mectronics.AdministracionEstudiantes.MS.Materia\\Controllers\\MateriaController.cs",
+              "ToolTip": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.MS.Materia\\Controllers\\MateriaController.cs",
+              "RelativeToolTip": "..\\Mectronics.AdministracionEstudiantes.MS.Materia\\Controllers\\MateriaController.cs",
+              "ViewState": "AgIAAKIAAAAAAAAAAADwv8UAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-24T21:03:58.472Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ConexionBaseDatos.cs",
-              "DocumentMoniker": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Repositorio\\ConexionBaseDatos.cs",
-              "RelativeDocumentMoniker": "..\\Mectronics.AdministracionEstudiantes.Repositorio\\ConexionBaseDatos.cs",
-              "ToolTip": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Repositorio\\ConexionBaseDatos.cs",
-              "RelativeToolTip": "..\\Mectronics.AdministracionEstudiantes.Repositorio\\ConexionBaseDatos.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAqwFkAAAAAAAAAAAAAAA==",
+              "Title": "InscripcionMateriaController.cs",
+              "DocumentMoniker": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.MS.InscripcionMateria\\Controllers\\InscripcionMateriaController.cs",
+              "RelativeDocumentMoniker": "..\\Mectronics.AdministracionEstudiantes.MS.InscripcionMateria\\Controllers\\InscripcionMateriaController.cs",
+              "ToolTip": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.MS.InscripcionMateria\\Controllers\\InscripcionMateriaController.cs",
+              "RelativeToolTip": "..\\Mectronics.AdministracionEstudiantes.MS.InscripcionMateria\\Controllers\\InscripcionMateriaController.cs",
+              "ViewState": "AgIAAI4AAAAAAAAAAAAswJ4AAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-24T15:35:36.113Z"
+              "WhenOpened": "2025-02-24T21:01:08.905Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UsuarioController.cs",
-              "DocumentMoniker": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.MS.Usuario\\Controllers\\UsuarioController.cs",
-              "RelativeDocumentMoniker": "..\\Mectronics.AdministracionEstudiantes.MS.Usuario\\Controllers\\UsuarioController.cs",
-              "ToolTip": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.MS.Usuario\\Controllers\\UsuarioController.cs",
-              "RelativeToolTip": "..\\Mectronics.AdministracionEstudiantes.MS.Usuario\\Controllers\\UsuarioController.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAgwCQAAAAQAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "InscripcionMateriaRepositorio.cs",
+              "DocumentMoniker": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Repositorio\\Repositorios\\InscripcionMateriaRepositorio.cs",
+              "RelativeDocumentMoniker": "..\\Mectronics.AdministracionEstudiantes.Repositorio\\Repositorios\\InscripcionMateriaRepositorio.cs",
+              "ToolTip": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Repositorio\\Repositorios\\InscripcionMateriaRepositorio.cs",
+              "RelativeToolTip": "..\\Mectronics.AdministracionEstudiantes.Repositorio\\Repositorios\\InscripcionMateriaRepositorio.cs",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAowHkAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-24T14:36:28.125Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.MS.Usuario\\appsettings.json",
-              "RelativeDocumentMoniker": "..\\Mectronics.AdministracionEstudiantes.MS.Usuario\\appsettings.json",
-              "ToolTip": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.MS.Usuario\\appsettings.json",
-              "RelativeToolTip": "..\\Mectronics.AdministracionEstudiantes.MS.Usuario\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-02-24T14:36:27.472Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UsuarioServicio.cs",
-              "DocumentMoniker": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Servicio\\Servicios\\UsuarioServicio.cs",
-              "RelativeDocumentMoniker": "..\\Mectronics.AdministracionEstudiantes.Servicio\\Servicios\\UsuarioServicio.cs",
-              "ToolTip": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Servicio\\Servicios\\UsuarioServicio.cs",
-              "RelativeToolTip": "..\\Mectronics.AdministracionEstudiantes.Servicio\\Servicios\\UsuarioServicio.cs",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAowFoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-24T14:34:44.264Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MateriaRepositorio.cs",
-              "DocumentMoniker": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Repositorio\\Repositorios\\MateriaRepositorio.cs",
-              "RelativeDocumentMoniker": "..\\Mectronics.AdministracionEstudiantes.Repositorio\\Repositorios\\MateriaRepositorio.cs",
-              "ToolTip": "E:\\Repositorios\\Mectronics.AdministracionEstudiantes\\Mectronics.AdministracionEstudiantes.Repositorio\\Repositorios\\MateriaRepositorio.cs",
-              "RelativeToolTip": "..\\Mectronics.AdministracionEstudiantes.Repositorio\\Repositorios\\MateriaRepositorio.cs",
-              "ViewState": "AgIAAKcAAAAAAAAAAAAswKwAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T16:17:29.104Z"
+              "WhenOpened": "2025-02-24T20:52:54.257Z",
+              "EditorCaption": ""
             }
           ]
         }

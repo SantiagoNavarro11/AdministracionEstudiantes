@@ -51,6 +51,7 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Mapeos
                     Nombre = lector.GetString(1),
                     NumeroCreditos = lector.GetInt32(2),
                     IdUsuarioProfesor = lector.GetInt32(3),
+                    NombreProfesor = lector.GetString(4),
                 });
             }
 

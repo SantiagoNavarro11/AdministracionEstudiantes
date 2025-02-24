@@ -28,6 +28,12 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Dtos
         /// </summary>
         public int IdUsuarioProfesor { get; set; }
 
+        /// <summary>
+        /// Nombre del profesor encargado de la materia.
+        /// </summary>
+        public string NombreProfesor { get; set; }
+
+
         public MateriaDto()
         {
             IdMateria = 0;

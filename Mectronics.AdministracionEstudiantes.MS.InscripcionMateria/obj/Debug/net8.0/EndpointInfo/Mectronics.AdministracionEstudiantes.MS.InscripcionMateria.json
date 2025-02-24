@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "API de Inscripción Materias",
-    "description": "API de Inscripción Materias",
+    "title": "API de Inscripci n Materias",
+    "description": "API de Inscripci n Materias",
     "contact": {
       "name": "Soporte API",
       "email": "davidnavarro038@gmail.com"
@@ -121,6 +121,30 @@
         "parameters": [
           {
             "name": "IdInscripcion",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "IdProfesor",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "IdUsuario",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "IdMateria",
             "in": "query",
             "schema": {
               "type": "integer",
@@ -283,6 +307,10 @@
           "idUsuarioProfesor": {
             "type": "integer",
             "format": "int32"
+          },
+          "nombreProfesor": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

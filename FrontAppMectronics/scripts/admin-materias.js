@@ -1,30 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
-    cargarProfesores();
-    cargarMaterias()
     cargarMenu();
-    cargarRoles();
+    cargarMaterias()
+    cargarProfesores();
 
     document.getElementById("formMateria").addEventListener("submit", function (event) {
         event.preventDefault();
-        registrarMateria();
+        guardarMateria();
     });
 });
 
 function cargarMaterias() {
-    fetch(URL_API_MATERIAS + "Materia")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Error HTTP: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Materias recibidas:", data);
-
-            let materiasArray = Array.isArray(data) ? data : data.datos;
+    fetch(URL_API_MATERIAS + "materia")
+        .then(response => response.json())
+        .then(resultado => {
+            let materiasArray = Array.isArray(resultado) ? resultado : resultado.datos;
 
             if (!materiasArray || !Array.isArray(materiasArray)) {
-                console.error("No se recibió un array de materias.");
                 return;
             }
 
@@ -38,7 +29,7 @@ function cargarMaterias() {
                     <td>${materia.idMateria}</td>
                     <td>${materia.nombre}</td>
                     <td>${materia.numeroCreditos}</td>
-                    <td>${materia.idUsuarioProfesor}</td>
+                    <td>${materia.nombreProfesor}</td>
                     <td>
                         <button class="btn btn-warning btn-sm" onclick="cargarMateriaParaEditar(${materia.idMateria})" data-bs-toggle="modal" data-bs-target="#modalRegistroMateria">
                             Editar
@@ -50,20 +41,19 @@ function cargarMaterias() {
             });
         })
         .catch(error => {
-            console.error("Error al cargar las materias:", error);
-            alertaError("No se pudieron cargar las materias.");
+            alertaError(error);
         });
 }
 
 
 function cargarProfesores() {
-    fetch("https://localhost:7225/api/usuarios?IdRol=" + ROL_PROFESOR)
+    fetch(URL_API_USUARIOS + "usuarios?IdRol=" + ROL_PROFESOR)
         .then(response => response.json())
-        .then(data => {
+        .then(resultado => {
             const selectProfesores = document.getElementById("idUsuarioProfesor");
             selectProfesores.innerHTML = "<option disabled selected>Seleccione un profesor</option>";
-debugger;
-            data.datos.forEach(profesor => {
+
+            resultado.datos.forEach(profesor => {
                 let option = document.createElement("option");
                 option.value = profesor.idUsuario;
                 option.textContent = `${profesor.nombres} ${profesor.apellidos}`;
@@ -74,9 +64,18 @@ debugger;
         .catch(error => console.error("Error al cargar profesores:", error));
 }
 
+async function guardarMateria() {
+    let idmateria = document.getElementById("idMateria").value;
+
+    if (!idmateria) {
+        registrarMateria();
+    }
+    else {
+        actualizarMateria();
+    }
+}
 
 function registrarMateria() {
-
     const nombre = document.getElementById("nombre").value;
     const numeroCreditos = document.getElementById("numeroCreditos").value;
     const idUsuarioProfesor = document.getElementById("idUsuarioProfesor").value;
@@ -87,7 +86,7 @@ function registrarMateria() {
         idUsuarioProfesor: parseInt(idUsuarioProfesor)
     };
 
-    fetch("https://localhost:44335/api/Materia", {
+    fetch(URL_API_MATERIAS + "materia", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -96,13 +95,15 @@ function registrarMateria() {
     })
         .then(response => response.json())
         .then(resultado => {
+            cerrarModal();
             if (resultado.exito) {
-
-                cargarMaterias()
                 alertaConfirmacion(resultado.mensaje);
                 document.getElementById("formMateria").reset();
+                document.getElementById("idMateria").value = "";
+                cargarMaterias();
             }
             else {
+                cerrarModal();
                 alertaError(resultado.mensaje);
             }
         })
@@ -111,13 +112,12 @@ function registrarMateria() {
         });
 }
 
-
-
 function cargarMateriaParaEditar(idmateria) {
 
     fetch(URL_API_MATERIAS + `Materia/${idmateria}`)
         .then(response => response.json())
         .then(resultado => {
+            document.getElementById("idMateria").value = resultado.datos.idMateria;
             document.getElementById("nombre").value = resultado.datos.nombre;
             document.getElementById("numeroCreditos").value = resultado.datos.numeroCreditos;
             document.getElementById("idUsuarioProfesor").value = resultado.datos.idUsuarioProfesor;
@@ -128,42 +128,51 @@ function cargarMateriaParaEditar(idmateria) {
 }
 
 //Actualiza una materia.
-function actualizarUsuario() {
-    let idmateria = document.getElementById("idmateria").value;
+function actualizarMateria() {
+    let idmateria = document.getElementById("idMateria").value;
+    const nombre = document.getElementById("nombre").value;
+    const numeroCreditos = document.getElementById("numeroCreditos").value;
+    const idUsuarioProfesor = document.getElementById("idUsuarioProfesor").value;
 
-    let materia = {
-        idmateria: parseInt(idmateria),
-        nombre: document.getElementById("nombres").value,
-        numeroCreditos: document.getElementById("numeroCreditos").value,
-        roles: {
-            idRol: parseInt(document.getElementById("IdRoles").value),
-        }
+    const materia = {
+        idMateria: parseInt(idmateria),
+        nombre: nombre,
+        numeroCreditos: parseInt(numeroCreditos),
+        idUsuarioProfesor: parseInt(idUsuarioProfesor)
     };
 
-    fetch(URL_API_MATERIAS + `Materia`, {
+    fetch(URL_API_MATERIAS + 'materia', {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(usuario)
+        body: JSON.stringify(materia)
     })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Error al actualizar el usuario.");
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Restablecer el formulario
-            document.getElementById("registroForm").reset();
-            document.getElementById("idmateria").value = "";
-
+        .then(response => response.json())
+        .then(resultado => {
             cerrarModal();
-            alertaAdvertencia("Usuario actualizado exitosamente.");
-            cargarMaterias();
+            if (resultado.exito) {
+                alertaAdvertencia(resultado.mensaje);
+                document.getElementById("formMateria").reset();
+                document.getElementById("idMateria").value = "";
+                cargarMaterias();
+            }
+            else {
+                alertaAdvertencia(resultado.mensaje);
+            }
         })
         .catch(error => {
             cerrarModal();
             alertaError(error);
         });
+}
+
+function cerrarModal() {
+
+    var modalElement = document.getElementById('modalRegistroMateria');
+    var modalInstance = bootstrap.Modal.getInstance(modalElement); // Obtener la instancia del modal
+
+    if (modalInstance) {
+        modalInstance.hide(); // Cierra la modal
+    }
 }

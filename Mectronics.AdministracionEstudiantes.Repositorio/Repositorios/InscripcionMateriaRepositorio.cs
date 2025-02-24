@@ -120,19 +120,33 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
         public List<InscripcionMateria> ConsultarListado(InscripcionMateriaFiltro filtro)
         {
             List<InscripcionMateria> inscripcionesMaterias = new List<InscripcionMateria>();
-            string consultaSql = "SELECT i.IdInscripcion,u.Nombres AS Usuario,m.NombreMateria AS Materia FROM InscripcionMaterias i INNER JOIN Usuarios u ON i.IdUsuario = u.IdUsuario INNER JOIN Materias m ON i.IdMateria = m.IdMateria";
+            string consultaSql = "SELECT i.IdInscripcion, i.IdUsuario, u.Nombres AS NombreUsuario, u.Apellidos AS ApellidoUsuario, i.IdMateria, m.NombreMateria AS Materia, m.IdUsuarioProfesor, " +
+                "p.Nombres + ' ' +  p.Apellidos As Profesor, m.NumeroCreditosMateria FROM InscripcionMaterias i INNER JOIN Usuarios u ON i.IdUsuario = u.IdUsuario INNER JOIN Materias m ON i.IdMateria = m.IdMateria " +
+                "INNER JOIN Usuarios p ON m.IdUsuarioProfesor = p.IdUsuario";
 
-            if (filtro.IdInscripcion > 0)
+            if (filtro.IdUsuario > 0)
             {
-                consultaSql += " AND IdInscripcion = @IdInscripcion";
+                consultaSql += " AND i.IdUsuario = @IdUsuario";
+            }
+
+            if (filtro.IdProfesor > 0)
+            {
+                consultaSql += " AND m.IdUsuarioProfesor = @IdProfesor";
+            }
+
+            if (filtro.IdMateria > 0)
+            {
+                consultaSql += " AND i.IdMateria = @IdMateria";
             }
 
             try
             {
                 _conexion.LimpiarParametros();
 
-                _conexion.AgregarParametro("@IdUsuario", filtro.IdInscripcion, SqlDbType.Int);
-                _conexion.AbrirConexion();
+                _conexion.AgregarParametro("@IdUsuario", filtro.IdUsuario, SqlDbType.Int);
+                _conexion.AgregarParametro("@IdProfesor", filtro.IdProfesor, SqlDbType.Int);
+                _conexion.AgregarParametro("@IdMateria", filtro.IdMateria, SqlDbType.Int);
+
                 using (IDataReader resultado = _conexion.EjecutarConsulta(consultaSql))
                 {
                     inscripcionesMaterias = InscripcionMateriaMapeo.MapearLista(resultado);

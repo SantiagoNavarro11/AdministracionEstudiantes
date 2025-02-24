@@ -63,6 +63,21 @@
         "Name": "IdInscripcion",
         "Type": "System.Int32",
         "IsRequired": false
+      },
+      {
+        "Name": "IdProfesor",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdUsuario",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdMateria",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
