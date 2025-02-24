@@ -2,20 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
     cargarMenu();
     cargarEstudiantes();
     cargarMaterias();
-
-    if (IdRol() == ROL_ADMINISTRADOR) {
-        cargarMateriasInscritas('');
-    }
+    cargarMateriasInscritas(IdUsuario());
 
     document.getElementById("inscripcionForm").addEventListener("submit", function (event) {
         event.preventDefault();
         inscribirMateria();
     });
-
-    /*document.getElementById("miSelect").addEventListener("change", function () {
-        let valorSeleccionado = this.value;
-        document.getElementById("resultado").textContent = valorSeleccionado;
-    });*/
 });
 
 function cargarEstudiantes() {
@@ -41,20 +33,20 @@ function cargarEstudiantes() {
             let usuarioLogueadoId = IdUsuario();
 
             usuariosArray.forEach(usuario => {
-                let option = document.createElement("option");
-                option.value = usuario.idUsuario;
-                option.textContent = `${usuario.nombres} ${usuario.apellidos}`;
+                // Si el usuario logueado coincide, seleccionarlo automáticamente.
+                if (usuario.idUsuario === usuarioLogueadoId) {
+                    let option = document.createElement("option");
+                    option.value = usuario.idUsuario;
+                    option.textContent = `${usuario.nombres} ${usuario.apellidos}`;
+                    option.selected = true;     
 
-                // Si el usuario logueado coincide, seleccionarlo automáticamente, solo si el rol no es administrador.
-                if (usuario.idUsuario === usuarioLogueadoId && IdRol() != ROL_ADMINISTRADOR) {
-                    option.selected = true;
-                    cargarMateriasInscritas(usuario.idUsuario);
-                }
-
-                selectUsuarios.appendChild(option);
+                    selectUsuarios.appendChild(option);
+                }                
             });
         })
-        .catch(error => console.error("Error al cargar usuarios:", error));
+        .catch(error =>{
+            alertaError(error);
+        });
 }
 
 
@@ -85,7 +77,9 @@ function cargarMaterias() {
                 selectMaterias.appendChild(option);
             });
         })
-        .catch(error => console.error("Error al cargar materias:", error));
+        .catch(error =>{
+            alertaError(error);
+        });
 }
 
 function inscribirMateria() {
@@ -120,7 +114,7 @@ function inscribirMateria() {
         .then(response => response.json())
         .then(resultado => {         
             if (resultado.exito) {
-                cargarMateriasInscritas('');
+                cargarMateriasInscritas(IdUsuario());
                 alertaConfirmacion(resultado.mensaje);
                 document.getElementById("inscripcionForm").reset();
             }
@@ -160,8 +154,11 @@ function cargarMateriasInscritas(idUsuario) {
                     <td>${registro.materia.numeroCreditos}</td>
                     <td>${registro.materia.nombreProfesor}</td>
                     <td>
-                        <button class="btn btn-warning btn-sm" onclick="cargarMateriaParaEditar(${registro.materia.idMateria})" data-bs-toggle="modal" data-bs-target="#modalRegistroMateria">
+                        <button class="btn btn-warning btn-sm" onclick="cargarMateriaParaEditar(${registro.materia.idMateria})">
                             Editar
+                        </button>
+                        <button class="btn btn-success btn-sm" onclick="cargarCompanerosMateria(${registro.materia.idMateria})" data-bs-toggle="modal" data-bs-target="#modalCompaneros">
+                            Ver Compañeros
                         </button>
                     </td>
                 `;
@@ -172,4 +169,33 @@ function cargarMateriasInscritas(idUsuario) {
         .catch(error => {
             alertaError(error);
         });
+}
+
+
+function cargarCompanerosMateria(idMateria) {
+    fetch(URL_API_INSCRIBIR_MATERIAS + "inscripcionMaterias?IdMateria=" + idMateria)
+    .then(response => response.json())
+    .then(resultado => {
+        let materiasArray = Array.isArray(resultado) ? resultado : resultado.datos;
+
+        if (!materiasArray || !Array.isArray(materiasArray)) {
+            return;
+        }
+
+        const tablaMaterias = document.getElementById("tablaEstudiantesMateria")
+        tablaMaterias.innerHTML = "";
+
+        materiasArray.forEach(registro => {
+            let fila = document.createElement("tr");
+
+            fila.innerHTML = `
+                <td>${registro.usuario.nombres} ${registro.usuario.apellidos}</td>                
+            `;
+
+            tablaMaterias.appendChild(fila);
+        });
+    })
+    .catch(error => {
+        alertaError(error);
+    });
 }

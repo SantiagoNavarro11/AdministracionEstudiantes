@@ -16,10 +16,9 @@ function cargarMenu()
 
     if (idRolUsuario == ROL_ADMINISTRADOR){
         document.getElementById("liGestionUsuarios").style.display = "block";
-        document.getElementById("liGestionMaterias").style.display = "block";
-        document.getElementById("liGestionarMisMaterias").style.display = "block";     
+        document.getElementById("liGestionMaterias").style.display = "block";        
     }
-    else if (idRolUsuario == ROL_ESTUDIANTE || idRolUsuario == ROL_PROFESOR){
+    else if (idRolUsuario == ROL_ESTUDIANTE || idRolUsuario == ROL_PROFESOR){        
         document.getElementById("liGestionarMisMaterias").style.display = "block"; 
     }   
 }
