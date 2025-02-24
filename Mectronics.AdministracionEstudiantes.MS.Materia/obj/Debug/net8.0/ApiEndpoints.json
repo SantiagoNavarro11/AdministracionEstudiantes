@@ -65,6 +65,11 @@
         "IsRequired": false
       },
       {
+        "Name": "IdProfesor",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
         "Name": "Nombre",
         "Type": "System.String",
         "IsRequired": false

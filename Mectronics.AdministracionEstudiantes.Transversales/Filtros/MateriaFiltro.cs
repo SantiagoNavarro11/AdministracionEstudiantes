@@ -17,6 +17,11 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Filtros
         public int IdMateria { get; set; }
 
         /// <summary>
+        /// Identificador único del profesor.
+        /// </summary>
+        public int IdProfesor { get; set; }
+
+        /// <summary>
         /// Nombre de la materia.
         /// </summary>
         public string Nombre { get; set; }
@@ -29,6 +34,7 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Filtros
         {
             IdMateria = 0;
             Nombre = string.Empty;
+            IdProfesor = 0;
         }
     }
 }

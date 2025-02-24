@@ -1,11 +1,11 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "API de Tiendas",
-    "description": "API para la gestión de estudiantes.",
+    "title": "API de Inscripción Materias",
+    "description": "API de Inscripción Materias",
     "contact": {
       "name": "Soporte API",
-      "email": "soporte@insoftin.com"
+      "email": "davidnavarro038@gmail.com"
     },
     "version": "v1"
   },

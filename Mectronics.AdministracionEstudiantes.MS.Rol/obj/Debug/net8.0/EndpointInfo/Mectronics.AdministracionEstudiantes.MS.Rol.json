@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "API de estudiantes.",
-    "description": "API para la gestión de gestion de estudiantes.",
+    "title": "API de Roles",
+    "description": "API para la gestión de roles.",
     "contact": {
       "name": "Soporte API",
       "email": "davidnavarro038@gmail.com"

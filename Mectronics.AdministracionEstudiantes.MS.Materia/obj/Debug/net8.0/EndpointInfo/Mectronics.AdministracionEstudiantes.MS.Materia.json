@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "API de estudiantes.",
-    "description": "API para la gestión de gestion de estudiantes.",
+    "title": "API de Materias.",
+    "description": "API para la gestión de materias.",
     "contact": {
       "name": "Soporte API",
       "email": "davidnavarro038@gmail.com"
@@ -121,6 +121,14 @@
         "parameters": [
           {
             "name": "IdMateria",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "IdProfesor",
             "in": "query",
             "schema": {
               "type": "integer",

@@ -73,6 +73,11 @@
         "Name": "CorreoElectronico",
         "Type": "System.String",
         "IsRequired": false
+      },
+      {
+        "Name": "IdRol",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -138,5 +143,21 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Mectronics.AdministracionEstudiantes.MS.Usuario.Controllers.UsuarioController",
+    "Method": "Login",
+    "RelativePath": "api/usuarios/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDto",
+        "Type": "Mectronics.AdministracionEstudiantes.Transversales.Dtos.UsuarioLoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

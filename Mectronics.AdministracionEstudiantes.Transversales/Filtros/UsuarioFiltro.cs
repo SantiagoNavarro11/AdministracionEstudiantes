@@ -27,6 +27,11 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Filtros
         public string CorreoElectronico { get; set; }
 
         /// <summary>
+        /// Identificador único del rol.
+        /// </summary>
+        public int IdRol { get; set; }
+
+        /// <summary>
         /// Constructor de la clase <see cref="UsuarioFiltro"/>.
         /// Inicializa una nueva instancia con valores predeterminados.
         /// </summary>
@@ -35,6 +40,7 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Filtros
             IdUsuario = 0;
             Apellidos = string.Empty;
             CorreoElectronico = string.Empty;
+            IdRol = 0;
         }
     }
 }

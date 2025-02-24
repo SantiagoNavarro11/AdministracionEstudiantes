@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "API de Estudiantes",
-    "description": "API para la gestión de estudiantes.",
+    "title": "API de Usuarios",
+    "description": "API para la gestión de usuarios.",
     "contact": {
       "name": "Soporte API",
       "email": "davidnavarro038@gmail.com"
@@ -10,6 +10,39 @@
     "version": "v1"
   },
   "paths": {
+    "/api/usuarios/login": {
+      "post": {
+        "tags": [
+          "Usuario"
+        ],
+        "summary": "Inicia sesión con un correo y contraseña.",
+        "requestBody": {
+          "description": "Datos de inicio de sesión.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioLoginDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioLoginDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioLoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/usuarios": {
       "post": {
         "tags": [
@@ -139,6 +172,14 @@
             "in": "query",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "IdRol",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
@@ -310,6 +351,20 @@
           "fecha": {
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UsuarioLoginDto": {
+        "type": "object",
+        "properties": {
+          "correo": {
+            "type": "string",
+            "nullable": true
+          },
+          "contrasena": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

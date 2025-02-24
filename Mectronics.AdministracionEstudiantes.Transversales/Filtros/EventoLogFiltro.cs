@@ -14,7 +14,7 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Filtros
         /// <summary>
         /// Identificador único del log registrado en el sistema.
         /// </summary>
-        public string? TipoLog { get; set; }
+        public string TipoLog { get; set; }
         public DateTime? Fecha { get; set; }
         /// Constructor de la clase <see cref="EventoLogFiltro"/>.
         /// Inicializa una nueva instancia con valores predeterminados.

@@ -1,0 +1,27 @@
+[
+  {
+    "Name": "Nuevo perfil",
+    "Projects": [
+      {
+        "Path": "..\\Mectronics.AdministracionEstudiantes.MS.Rol\\Mectronics.AdministracionEstudiantes.MS.Rol.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\Mectronics.AdministracionEstudiantes.MS.Usuario\\Mectronics.AdministracionEstudiantes.MS.Usuario.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\Mectronics.AdministracionEstudiantes.MS.Materia\\Mectronics.AdministracionEstudiantes.MS.Materia.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\Mectronics.AdministracionEstudiantes.MS.InscripcionMateria\\Mectronics.AdministracionEstudiantes.MS.InscripcionMateria.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\Mectronics.AdministracionEstudiantes.MS.EventoLog\\Mectronics.AdministracionEstudiantes.MS.EventoLog.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

@@ -10,6 +10,19 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://127.0.0.1:5500")
+                                .AllowAnyMethod()
+                                .AllowAnyHeader();
+                      });
+});
+
 
 // Add services to the container.
 
@@ -32,9 +45,9 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "API de Estudiantes",
+        Title = "API de Usuarios",
         Version = "v1",
-        Description = "API para la gestión de estudiantes.",
+        Description = "API para la gestión de usuarios.",
         Contact = new OpenApiContact
         {
             Name = "Soporte API",
@@ -60,6 +73,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 

@@ -21,6 +21,12 @@ namespace Mectronics.AdministracionEstudiantes.Servicio
         {
             Materia materia = _mapeo.Map<Materia>(materiaDto);
             ValidarDatos(materia);
+
+            List<Materia> materias = _repositorioMateria.ConsultarListado(new MateriaFiltro() { IdProfesor = materiaDto.IdUsuarioProfesor });
+
+            if (materias.Count >= 2)
+                throw new ArgumentException("El profesor no puede tener asignadas mas de dos materias.");
+
             materiaDto.IdMateria = _repositorioMateria.Insertar(materia);
             return materiaDto;
         }

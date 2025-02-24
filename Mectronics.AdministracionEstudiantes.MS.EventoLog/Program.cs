@@ -38,9 +38,9 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "API de Tiendas",
+        Title = "API de Eventos Logs",
         Version = "v1",
-        Description = "API para la gestión de estudiantes.",
+        Description = "API para la gestión de Logs.",
         Contact = new OpenApiContact
         {
             Name = "Soporte API",

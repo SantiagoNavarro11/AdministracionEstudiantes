@@ -9,35 +9,41 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Configuración de CORS antes de builder.Build()
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://127.0.0.1:5500") // URL del frontend
+                                .AllowAnyMethod()
+                                .AllowAnyHeader();
+                      });
+});
 
+// Agregar servicios a la contenedor
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
 // Registrar AutoMapper con el ensamblado que contiene los perfiles
 builder.Services.AddAutoMapper(typeof(AutoMapeador));
 
-//Inyeccion de Dependencias
+// Inyección de dependencias
 builder.Services.AddScoped<IConexionBaseDatos, ConexionBaseDatos>();
 builder.Services.AddScoped<IRolServicio, RolServicio>();
 builder.Services.AddScoped<IRolRepositorio, RolRepositorio>();
 
 builder.Services.AddControllers();
 
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-
-// Configurar Swagger para la documentación de la API
+// Configurar Swagger para documentación de la API
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "API de estudiantes.",
+        Title = "API de Roles",
         Version = "v1",
-        Description = "API para la gestión de gestion de estudiantes.",
+        Description = "API para la gestión de roles.",
         Contact = new OpenApiContact
         {
             Name = "Soporte API",
@@ -45,17 +51,17 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 
-    // Obtener la ruta del archivo XML de documentación
+    // Incluir comentarios XML en Swagger
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-
-    // Incluir comentarios XML en Swagger
     options.IncludeXmlComments(xmlPath);
 });
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Habilitar CORS antes de UseAuthorization()
+app.UseCors(MyAllowSpecificOrigins);
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

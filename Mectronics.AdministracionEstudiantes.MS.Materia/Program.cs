@@ -5,40 +5,41 @@ using Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IMateria;
 using Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IRepositorio;
 using Mectronics.AdministracionEstudiantes.Transversales.Mapeos;
 using Microsoft.OpenApi.Models;
-
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Agregar configuración de CORS ANTES de builder.Build()
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://127.0.0.1:5500")
+                                .AllowAnyMethod()
+                                .AllowAnyHeader();
+                      });
+});
+
 // Add services to the container.
-
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
-
-// Registrar AutoMapper con el ensamblado que contiene los perfiles
 builder.Services.AddAutoMapper(typeof(AutoMapeador));
 
-//Inyeccion de Dependencias
+// Inyección de dependencias
 builder.Services.AddScoped<IConexionBaseDatos, ConexionBaseDatos>();
-builder.Services.AddScoped<IMateriaServicio,MateriaServicio>();
+builder.Services.AddScoped<IMateriaServicio, MateriaServicio>();
 builder.Services.AddScoped<IMateriaRepositorio, MateriaRepositorio>();
 
 builder.Services.AddControllers();
-
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-
-// Configurar Swagger para la documentación de la API
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "API de estudiantes.",
+        Title = "API de Materias.",
         Version = "v1",
-        Description = "API para la gestión de gestion de estudiantes.",
+        Description = "API para la gestión de materias.",
         Contact = new OpenApiContact
         {
             Name = "Soporte API",
@@ -46,17 +47,14 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 
-    // Obtener la ruta del archivo XML de documentación
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-
-    // Incluir comentarios XML en Swagger
     options.IncludeXmlComments(xmlPath);
 });
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configurar el middleware en el orden correcto
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -64,6 +62,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Aplicar CORS ANTES de `UseAuthorization()`
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 

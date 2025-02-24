@@ -28,9 +28,10 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Mapeos
                 Contrasena = lector.GetString(5),
                 Roles = new Rol
                 {
-                    Nombre = lector.GetString(6)
+                    IdRol = lector.GetInt32(6),
+                    Nombre = lector.GetString(7)
                 },
-                Fecha = lector.GetDateTime(7),
+                Fecha = lector.GetDateTime(8),
             };
         }
 
@@ -61,8 +62,9 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Mapeos
                     Roles = new Rol
                     {
                         IdRol = Convert.ToInt32(lector.GetInt32(6)),
+                        Nombre = lector.GetString(7),
                     },
-                    Fecha = lector.GetDateTime(7),
+                    Fecha = lector.GetDateTime(8),
                 });
             }
 

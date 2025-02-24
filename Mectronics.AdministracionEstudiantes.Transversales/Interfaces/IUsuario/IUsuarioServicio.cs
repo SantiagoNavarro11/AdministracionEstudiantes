@@ -45,5 +45,7 @@ namespace Mectronics.AdministracionEstudiantes.Transversales.Interfaces.IUsuario
         /// <param name="objEntidad">Objeto de tipo <see cref="UsuarioFiltro"/> con los criterios de búsqueda.</param>
         /// <returns>Retorna una lista de objetos <see cref="Usuario"/> con la información de los usuarios encontrados.</returns>
         List<UsuarioDto> ConsultarListado(UsuarioFiltro objEntidad);
+
+        UsuarioDto Autenticar(string correo, string contrasena);
     }
 }

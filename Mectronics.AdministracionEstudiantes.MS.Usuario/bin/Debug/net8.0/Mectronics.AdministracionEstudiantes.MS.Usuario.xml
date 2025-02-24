@@ -15,6 +15,13 @@
             </summary>
             <param name="usuarioServicio">Servicio de usuarios inyectado.</param>
         </member>
+        <member name="M:Mectronics.AdministracionEstudiantes.MS.Usuario.Controllers.UsuarioController.Login(Mectronics.AdministracionEstudiantes.Transversales.Dtos.UsuarioLoginDto)">
+            <summary>
+            Inicia sesión con un correo y contraseña.
+            </summary>
+            <param name="loginDto">Datos de inicio de sesión.</param>
+            <returns>Datos del usuario autenticado o mensaje de error.</returns>
+        </member>
         <member name="M:Mectronics.AdministracionEstudiantes.MS.Usuario.Controllers.UsuarioController.Insertar(Mectronics.AdministracionEstudiantes.Transversales.Dtos.UsuarioDto)">
             <summary>
             Inserta un nuevo usuario.

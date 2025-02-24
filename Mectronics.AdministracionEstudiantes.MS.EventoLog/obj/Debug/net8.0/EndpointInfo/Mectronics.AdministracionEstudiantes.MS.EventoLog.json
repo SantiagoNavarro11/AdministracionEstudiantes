@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "API de Tiendas",
-    "description": "API para la gestión de estudiantes.",
+    "title": "API de Eventos Logs",
+    "description": "API para la gestión de Logs.",
     "contact": {
       "name": "Soporte API",
       "email": "davidnavarro038@gmail.com"

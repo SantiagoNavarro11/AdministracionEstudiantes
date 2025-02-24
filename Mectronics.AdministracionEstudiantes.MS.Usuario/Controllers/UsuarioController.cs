@@ -25,6 +25,46 @@ namespace Mectronics.AdministracionEstudiantes.MS.Usuario.Controllers
         }
 
         /// <summary>
+        /// Inicia sesión con un correo y contraseña.
+        /// </summary>
+        /// <param name="loginDto">Datos de inicio de sesión.</param>
+        /// <returns>Datos del usuario autenticado o mensaje de error.</returns>
+        [HttpPost("login")]
+        public ActionResult Login([FromBody] UsuarioLoginDto loginDto)
+        {
+            try
+            {
+                UsuarioDto usuario = _usuarioServicio.Autenticar(loginDto.Correo, loginDto.Contrasena);
+
+                if (usuario == null)
+                {
+                    return Unauthorized(new RespuestaDto
+                    {
+                        Exito = false,
+                        Mensaje = "Correo o contraseña incorrectos.",
+                        Datos = null
+                    });
+                }
+
+                return Ok(new RespuestaDto
+                {
+                    Exito = true,
+                    Mensaje = "Inicio de sesión exitoso.",
+                    Datos = usuario
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new RespuestaDto
+                {
+                    Exito = false,
+                    Mensaje = ex.Message,
+                    Datos = null
+                });
+            }
+        }
+
+        /// <summary>
         /// Inserta un nuevo usuario.
         /// </summary>
         /// <param name="usuarioDto">Datos del usuario a insertar.</param>

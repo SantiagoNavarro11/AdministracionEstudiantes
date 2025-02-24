@@ -34,6 +34,27 @@ namespace Mectronics.AdministracionEstudiantes.Servicio.Servicios
             _mapeo = mapeo;
         }
 
+        public UsuarioDto Autenticar(string correo, string contrasena)
+        {
+            var usuario = _repositorioUsuario.Autenticar(correo);
+
+            if (string.IsNullOrWhiteSpace(contrasena))
+            {
+                throw new UnauthorizedAccessException("La contraseña es requerida");
+            }
+
+            if (usuario == null)
+                throw new UnauthorizedAccessException("El usuario no existe");
+
+            if (contrasena != usuario.Contrasena)
+            {
+                throw new UnauthorizedAccessException("Contraseña incorrecta");
+            }
+
+            usuario.Contrasena = string.Empty;
+
+            return _mapeo.Map<UsuarioDto>(usuario);
+        }
         public UsuarioDto Consultar(UsuarioFiltro objFiltro)
         {
             if (objFiltro == null)
@@ -68,7 +89,7 @@ namespace Mectronics.AdministracionEstudiantes.Servicio.Servicios
         {
             Usuario usuario = _mapeo.Map<Usuario>(usuarioDto);
 
-           // ValidarDatos(usuario);
+            // ValidarDatos(usuario);
 
             usuarioDto.IdUsuario = _repositorioUsuario.Insertar(usuario);
 

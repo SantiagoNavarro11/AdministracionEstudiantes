@@ -10,14 +10,19 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configurar CORS
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", policy =>
-        policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader());
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://127.0.0.1:5500")
+                                .AllowAnyMethod()
+                                .AllowAnyHeader();
+                      });
 });
+
 
 // Agregar `IConfiguration` al contenedor de dependencias
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
@@ -39,13 +44,13 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "API de Tiendas",
+        Title = "API de Inscripción Materias",
         Version = "v1",
-        Description = "API para la gestión de estudiantes.",
+        Description = "API de Inscripción Materias",
         Contact = new OpenApiContact
         {
             Name = "Soporte API",
-            Email = "soporte@insoftin.com"
+            Email = "davidnavarro038@gmail.com"
         }
     });
 
@@ -69,6 +74,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.MapControllers();
 

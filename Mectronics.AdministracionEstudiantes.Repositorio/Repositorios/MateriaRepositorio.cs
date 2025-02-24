@@ -35,17 +35,19 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
         public int Insertar(Materia objEntidad)
         {
             string strComandoSql = @"INSERT INTO Materias (NombreMateria, NumeroCreditosMateria, IdUsuarioProfesor) 
-                                     VALUES (@NombreMateria, @NumeroCreditosMateria, @IdUsuarioProfesor)";
-            int filasAfectadas = 0;
+                                    VALUES (@NombreMateria, @NumeroCreditosMateria, @IdUsuarioProfesor)
+                                    SELECT SCOPE_IDENTITY();";
+            int idMateria = 0;
 
             try
             {
                 _conexion.LimpiarParametros();
                 _conexion.AgregarParametro("@NombreMateria", objEntidad.Nombre, SqlDbType.VarChar);
-                _conexion.AgregarParametro("@NumeroCreditosMateria", 3, SqlDbType.Int);
+                _conexion.AgregarParametro("@NumeroCreditosMateria", objEntidad.NumeroCreditos, SqlDbType.Int);
                 _conexion.AgregarParametro("@IdUsuarioProfesor", objEntidad.IdUsuarioProfesor, SqlDbType.Int);
-                _conexion.AbrirConexion();
-                filasAfectadas = _conexion.EjecutarComando(strComandoSql);
+
+                object resultado = _conexion.EjecutarEscalarSql(strComandoSql);
+                idMateria = Convert.ToInt32(resultado);
             }
             catch (Exception ex)
             {
@@ -55,7 +57,7 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
             {
                 _conexion.CerrarConexion();
             }
-            return filasAfectadas;
+            return idMateria;
         }
 
         /// <summary>
@@ -139,7 +141,7 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
             {
                 _conexion.LimpiarParametros();
                 _conexion.AgregarParametro("@IdMateria", objMateria.IdMateria, SqlDbType.Int);
-                _conexion.AbrirConexion();
+                
                 using (IDataReader resultado = _conexion.EjecutarConsulta(consultaSql))
                 {
                     materia = MateriaMapeo.Mapear(resultado);
@@ -163,12 +165,15 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
         public List<Materia> ConsultarListado(MateriaFiltro objMateria)
         {
             List<Materia> materias = new List<Materia>();
-            string consultaSql = @" SELECT m.IdMateria, m.NombreMateria, m.NumeroCreditosMateria, m.IdUsuarioProfesor FROM Materias m INNER JOIN Usuarios u ON m.IdUsuarioProfesor = u.IdUsuario";
+            string consultaSql = @" SELECT m.IdMateria, m.NombreMateria, m.NumeroCreditosMateria, m.IdUsuarioProfesor FROM Materias m INNER JOIN Usuarios u ON m.IdUsuarioProfesor = u.IdUsuario WHERE 1 = 1";
 
             if (objMateria.IdMateria > 0)
             {
                 consultaSql += " AND m.IdMateria = @IdMateria";
             }
+
+            if (objMateria.IdProfesor > 0)
+                consultaSql += " AND m.IdUsuarioProfesor = @IdUsuarioProfesor";
 
             if (!string.IsNullOrWhiteSpace(objMateria.Nombre))
             {
@@ -180,7 +185,8 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
                 _conexion.LimpiarParametros();
                 _conexion.AgregarParametro("@IdMateria", objMateria.IdMateria, SqlDbType.Int);
                 _conexion.AgregarParametro("@NombreMateria", "%" + objMateria.Nombre + "%", SqlDbType.VarChar);
-                _conexion.AbrirConexion();
+                _conexion.AgregarParametro("@IdUsuarioProfesor", objMateria.IdProfesor, SqlDbType.Int);
+
                 using (IDataReader resultado = _conexion.EjecutarConsulta(consultaSql))
                 {
                     materias = MateriaMapeo.MapearLista(resultado);

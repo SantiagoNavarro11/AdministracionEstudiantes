@@ -65,8 +65,6 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio
             if (Conexion != null && Conexion.State == ConnectionState.Open)
             {
                 Conexion.Close();
-                Conexion.Dispose();
-                Comando?.Dispose();
             }
         }
         /// <summary>

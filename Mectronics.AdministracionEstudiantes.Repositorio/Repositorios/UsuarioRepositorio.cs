@@ -24,6 +24,34 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
         {
             _conexion = conexion;
         }
+
+        public Usuario Autenticar(string correo)
+        {
+            Usuario usuario = null;
+            string consultaSql = "SELECT U.IdUsuario, U.Nombres, U.Apellidos, U.Edad, U.CorreoElectronico, U.Contrasena, R.IdRol, R.NombreRol AS Rol, U.Fecha " +
+                "FROM Usuarios U INNER JOIN Roles R ON U.IdRoles = R.IdRol WHERE U.CorreoElectronico = @CorreoElectronico";
+
+            try
+            {
+                _conexion.LimpiarParametros();
+                _conexion.AgregarParametro("@CorreoElectronico", correo, SqlDbType.VarChar);
+
+                using (IDataReader resultado = _conexion.EjecutarConsulta(consultaSql))
+                {
+                    usuario = UsuarioMapeo.Mapear(resultado);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al autenticar el usuario en la base de datos.", ex);
+            }
+            finally
+            {
+                _conexion.CerrarConexion();
+            }
+
+            return usuario;
+        }
         public int Insertar(Usuario objEntidad)
         {
             string strComandoSql = @"INSERT INTO Usuarios (Nombres, Apellidos, Edad, CorreoElectronico, Contrasena, IdRoles, Fecha) 
@@ -111,7 +139,7 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
         public Usuario Consultar(UsuarioFiltro usuarioFiltro)
         {
             Usuario usuario = null;
-            string consultaSql = "SELECT U.IdUsuario, U.Nombres, U.Apellidos, U.Edad, U.CorreoElectronico, U.Contrasena, R.NombreRol AS Rol, U.Fecha " +
+            string consultaSql = "SELECT U.IdUsuario, U.Nombres, U.Apellidos, U.Edad, U.CorreoElectronico, U.Contrasena, R.IdRol, R.NombreRol AS Rol, U.Fecha " +
                 "FROM Usuarios U INNER JOIN Roles R ON U.IdRoles = R.IdRol WHERE U.IdUsuario = @IdUsuario";
 
             try
@@ -140,8 +168,9 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
         public List<Usuario> ConsultarListado(UsuarioFiltro filtro)
         {
             List<Usuario> usuarios = new List<Usuario>();
-            string consultaSql = "SELECT u.IdUsuario, u.Nombres, u.Apellidos, u.Edad, u.CorreoElectronico, u.Contrasena, u.IdRoles, u.Fecha " +
-                                 "FROM Usuarios u WHERE u.Apellidos LIKE @Apellidos";
+            string consultaSql = "SELECT U.IdUsuario, U.Nombres, U.Apellidos, U.Edad, U.CorreoElectronico, U.Contrasena, R.IdRol, R.NombreRol AS Rol, U.Fecha " +
+                "FROM Usuarios U INNER JOIN Roles R ON U.IdRoles = R.IdRol " +
+                "WHERE u.Apellidos LIKE @Apellidos";
 
             if (!string.IsNullOrEmpty(filtro.CorreoElectronico))
             {
@@ -153,12 +182,18 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
                 consultaSql += " AND u.IdUsuario = @IdUsuario";
             }
 
+            if (filtro.IdRol > 0)
+            {
+                consultaSql += " AND R.IdRol = @IdRol";
+            }
+
             try
             {
                 _conexion.LimpiarParametros();
                 _conexion.AgregarParametro("@Apellidos", $"%{filtro.Apellidos}%", SqlDbType.VarChar);
                 _conexion.AgregarParametro("@CorreoElectronico", $"%{filtro.CorreoElectronico}%", SqlDbType.VarChar);
                 _conexion.AgregarParametro("@IdUsuario", filtro.IdUsuario, SqlDbType.Int);
+                _conexion.AgregarParametro("@IdRol", filtro.IdRol, SqlDbType.Int);
 
                 using (IDataReader resultado = _conexion.EjecutarConsulta(consultaSql))
                 {
