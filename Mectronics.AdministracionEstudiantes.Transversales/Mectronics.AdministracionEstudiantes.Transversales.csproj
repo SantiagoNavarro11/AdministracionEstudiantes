@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <Folder Include="Interfaces\IRepositorio\" />
-    <Folder Include="Funciones\" />
   </ItemGroup>
 
 </Project>

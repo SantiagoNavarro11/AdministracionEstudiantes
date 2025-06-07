@@ -153,10 +153,7 @@ function cargarMateriasInscritas(idUsuario) {
                     <td>${registro.materia.nombre}</td>
                     <td>${registro.materia.numeroCreditos}</td>
                     <td>${registro.materia.nombreProfesor}</td>
-                    <td>
-                        <button class="btn btn-warning btn-sm" onclick="cargarMateriaParaEditar(${registro.materia.idMateria})">
-                            Editar
-                        </button>
+                    <td>                       
                         <button class="btn btn-success btn-sm" onclick="cargarCompanerosMateria(${registro.materia.idMateria})" data-bs-toggle="modal" data-bs-target="#modalCompaneros">
                             Ver Compañeros
                         </button>
@@ -172,11 +169,12 @@ function cargarMateriasInscritas(idUsuario) {
 }
 
 
-function cargarCompanerosMateria(idMateria) {
+function cargarCompanerosMateria(idMateria,) {  
     fetch(URL_API_INSCRIBIR_MATERIAS + "inscripcionMaterias?IdMateria=" + idMateria)
     .then(response => response.json())
     .then(resultado => {
         let materiasArray = Array.isArray(resultado) ? resultado : resultado.datos;
+
 
         if (!materiasArray || !Array.isArray(materiasArray)) {
             return;
@@ -184,14 +182,12 @@ function cargarCompanerosMateria(idMateria) {
 
         const tablaMaterias = document.getElementById("tablaEstudiantesMateria")
         tablaMaterias.innerHTML = "";
-
+        
         materiasArray.forEach(registro => {
             let fila = document.createElement("tr");
-
             fila.innerHTML = `
-                <td>${registro.usuario.nombres} ${registro.usuario.apellidos}</td>                
+                <td>${registro.usuario.nombres} ${registro.usuario.apellidos}</td>
             `;
-
             tablaMaterias.appendChild(fila);
         });
     })

@@ -140,7 +140,7 @@ async function registrarUsuario() {
             .then(data => {
                 document.getElementById("registroForm").reset();
                 cerrarModal();
-                alertaConfirmacion("Usuario registrado exitosamente.");
+                alertaConfirmacion("Usuario creado con exito.");
                 cargarUsuarios(); // Recargar la lista de usuarios
             })
             .catch(error => {

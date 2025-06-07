@@ -55,7 +55,7 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
         public int Insertar(Usuario objEntidad)
         {
             string strComandoSql = @"INSERT INTO Usuarios (Nombres, Apellidos, Edad, CorreoElectronico, Contrasena, IdRoles, Fecha) 
-                     VALUES (@Nombres, @Apellidos, @Edad, @CorreoElectronico, @Contrasena, @IdRoles, @Fecha) SELECT SCOPE_IDENTITY();";
+                     VALUES (@Nombres, @Apellidos, @Edad, @CorreoElectronico, @Contrasena, @IdRoles, @Fecha) SELECT SCOPE_IDENTITY(); ";
             int IdUsuario = 0;
 
             try
@@ -71,6 +71,8 @@ namespace Mectronics.AdministracionEstudiantes.Repositorio.Repositorios
                 _conexion.AbrirConexion();
                 object resultado = _conexion.EjecutarEscalarSql(strComandoSql);
                 IdUsuario = Convert.ToInt32(resultado);
+
+               
             }
             catch (Exception ex)
             {
